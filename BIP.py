@@ -32,23 +32,21 @@ st.markdown("""
 
 # -------------------- SIDE MENU --------------------
 st.sidebar.title("📌 Image Processing Menu")
-menu = st.sidebar.radio(
-    "Choose an Option 👇",
-    [
-        "🏠 Home",
-        "📏 Image Properties",
-        "⚫ Grayscale",
-        "🔄 Rotate Image",
-        "🪞 Mirror Image",
-        "🟢 Contours",
-        "✂ Vertical / Horizontal Cut",
-        "📐 Custom Percentage Cut",
-        "🔳 4×4 Grid Split"
-    ]
-)
 
-uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
+menu_options = {
+    "🏠 Home": "home",
+    "📏 Image Properties": "props",
+    "⚫ Grayscale": "gray",
+    "🔄 Rotate Image": "rotate",
+    "🪞 Mirror Image": "mirror",
+    "🟢 Contours": "contours",
+    "✂ Vertical / Horizontal Cut": "cut",
+    "📐 Custom Percentage Cut": "custom",
+    "🔳 4×4 Grid Split": "grid"
+}
 
+menu_label = st.sidebar.radio("Choose an Option 👇", list(menu_options.keys()))
+menu = menu_options[menu_label]
 
 # -------------------- HELPER: DOWNLOAD BUTTON --------------------
 def download_image(img, filename):
