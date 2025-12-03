@@ -29,8 +29,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
-# -------------------- SIDE MENU --------------------
+# -------------------- SIDE MENU WITH FIXED LABELS --------------------
 st.sidebar.title("📌 Image Processing Menu")
 
 menu_options = {
@@ -48,62 +47,63 @@ menu_options = {
 menu_label = st.sidebar.radio("Choose an Option 👇", list(menu_options.keys()))
 menu = menu_options[menu_label]
 
-# -------------------- HELPER: DOWNLOAD BUTTON --------------------
-def download_image(img, filename):
-    buf = BytesIO()
-    img.save(buf, format="PNG")
-    byte_img = buf.getvalue()
-    st.download_button("📥 Download", data=byte_img, file_name=filename, mime="image/png")
+# -------------------- IMAGE UPLOADER --------------------
+uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
 
-
-# ====================== IF NO IMAGE ======================
-if not uploaded_file:
-    st.info("⬅️ Upload an image from the **left sidebar** to begin.")
+# -------------------- STOP IF NO IMAGE --------------------
+if uploaded_file is None:
+    st.info("⬅️ Please upload an image from the **sidebar** to continue.")
     st.stop()
 
-# Load image
+# -------------------- LOAD IMAGE --------------------
 image = Image.open(uploaded_file)
 img_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
 gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
 w, h = image.size
 
 
+# -------------------- DOWNLOAD BUTTON FUNCTION --------------------
+def download_image(img, filename):
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    st.download_button("📥 Download Image", buf.getvalue(), file_name=filename)
+
+
 # ====================== HOME ======================
-if menu == "🏠 Home":
-    st.title("🎨 Image Processing App (OpenCV + PIL)")
-    st.subheader("✨ Made simple, colorful & beginner-friendly ✨")
+if menu == "home":
+    st.title("🎨 Image Processing App")
+    st.subheader("✨ Clean • Colorful • Easy-to-use ✨")
     st.image(image, caption="Uploaded Image", use_column_width=True)
+
     st.markdown("""
-    ### 🔧 What You Can Do:
-    - Convert to **Grayscale**
-    - **Rotate** in 90° / 180° / 270°
-    - Create **Mirror image**
-    - Detect **Contours**
-    - Split image **50-50 Vertical/Horizontal**
-    - Make **Custom % Cut**
-    - Generate **4×4 Grid Tiles**
-    
-    👉 Use the **menu on the left** to explore each feature!
+    ### 🔧 Features You Can Use:
+    - Grayscale  
+    - Rotate  
+    - Mirror  
+    - Contours  
+    - 50-50 Split  
+    - Custom Percentage Split  
+    - 4×4 Grid Tiles  
+
+    👉 Choose a feature using the sidebar!
     """)
 
 
 # ====================== IMAGE PROPERTIES ======================
-elif menu == "📏 Image Properties":
+elif menu == "props":
     st.title("📏 Image Properties")
 
     col1, col2 = st.columns(2)
     with col1:
-        st.image(image, caption="Original Image", use_column_width=True)
-
+        st.image(image, caption="Uploaded Image", use_column_width=True)
     with col2:
-        st.write(f"🖼 **Size (W × H):** `{w} × {h}`")
-        st.write(f"🎯 **Mode:** `{image.mode}`")
-        st.write(f"🔍 **Shape:** `{np.array(img_cv).shape}`")
-
+        st.write(f"🖼 **Size:** {w} × {h}")
+        st.write(f"🎯 **Mode:** {image.mode}")
+        st.write(f"🔍 **Shape:** {np.array(img_cv).shape}")
 
 
 # ====================== GRAYSCALE ======================
-elif menu == "⚫ Grayscale":
+elif menu == "gray":
     st.title("⚫ Grayscale Image")
 
     gray_img = Image.fromarray(gray)
@@ -111,21 +111,19 @@ elif menu == "⚫ Grayscale":
     download_image(gray_img, "grayscale.png")
 
 
-
 # ====================== ROTATE ======================
-elif menu == "🔄 Rotate Image":
+elif menu == "rotate":
     st.title("🔄 Rotate Image")
 
-    angle = st.radio("Choose rotation angle:", [90, 180, 270], horizontal=True)
+    angle = st.radio("Choose rotation:", [90, 180, 270], horizontal=True)
     rotated = image.rotate(angle, expand=True)
 
     st.image(rotated, caption=f"Rotated {angle}°", use_column_width=True)
     download_image(rotated, f"rotated_{angle}.png")
 
 
-
 # ====================== MIRROR ======================
-elif menu == "🪞 Mirror Image":
+elif menu == "mirror":
     st.title("🪞 Mirror Image")
 
     mirrored = image.transpose(Image.FLIP_LEFT_RIGHT)
@@ -133,70 +131,69 @@ elif menu == "🪞 Mirror Image":
     download_image(mirrored, "mirrored.png")
 
 
-
 # ====================== CONTOURS ======================
-elif menu == "🟢 Contours":
+elif menu == "contours":
     st.title("🟢 Contour Detection")
 
     edges = cv2.Canny(gray, 100, 200)
-    contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    st.write(f"✨ **Contours Detected:** `{len(contours)}` shapes")
+    contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     contoured = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
     cv2.drawContours(contoured, contours, -1, (0,255,0), 2)
+
     contoured_img = Image.fromarray(cv2.cvtColor(contoured, cv2.COLOR_BGR2RGB))
 
+    st.write(f"✨ **Contours Found:** {len(contours)}")
+
     col1, col2 = st.columns(2)
-    col1.image(edges, caption="Canny Edges", use_column_width=True)
-    col2.image(contoured_img, caption="Contour Output", use_column_width=True)
+    col1.image(edges, caption="Edges", use_column_width=True)
+    col2.image(contoured_img, caption="Contours", use_column_width=True)
 
     download_image(contoured_img, "contours.png")
 
 
-
-# ====================== 50/50 CUT ======================
-elif menu == "✂ Vertical / Horizontal Cut":
-    st.title("✂ 50-50 Image Split")
+# ====================== 50/50 SPLIT ======================
+elif menu == "cut":
+    st.title("✂ Vertical & Horizontal 50/50 Cut")
 
     left = image.crop((0, 0, w//2, h))
     right = image.crop((w//2, 0, w, h))
+
     top = image.crop((0, 0, w, h//2))
     bottom = image.crop((0, h//2, w, h))
 
     st.subheader("📌 Vertical (Left / Right)")
-    c1, c2 = st.columns(2)
-    c1.image(left, caption="Left Half")
-    c2.image(right, caption="Right Half")
+    col1, col2 = st.columns(2)
+    col1.image(left, caption="Left Half", use_column_width=True)
+    col2.image(right, caption="Right Half", use_column_width=True)
 
     st.subheader("📌 Horizontal (Top / Bottom)")
-    c3, c4 = st.columns(2)
-    c3.image(top, caption="Top Half")
-    c4.image(bottom, caption="Bottom Half")
+    col3, col4 = st.columns(2)
+    col3.image(top, caption="Top Half", use_column_width=True)
+    col4.image(bottom, caption="Bottom Half", use_column_width=True)
 
 
-
-# ====================== CUSTOM CUT ======================
-elif menu == "📐 Custom Percentage Cut":
+# ====================== CUSTOM PERCENT SPLIT ======================
+elif menu == "custom":
     st.title("📐 Custom Percentage Cut")
 
-    percent = st.slider("Select split % for left part:", 10, 90, 80)
-    cut_x = int((percent/100) * w)
+    percent = st.slider("Select left side %:", 10, 90, 80)
+    cut_x = int((percent / 100) * w)
 
     p1 = image.crop((0, 0, cut_x, h))
     p2 = image.crop((cut_x, 0, w, h))
 
-    st.write(f"🔸 **Left: {percent}%**")
+    st.subheader(f"🔸 Left: {percent}%")
     st.image(p1)
 
-    st.write(f"🔹 **Right: {100-percent}%**")
+    st.subheader(f"🔹 Right: {100 - percent}%")
     st.image(p2)
 
 
-
 # ====================== 4×4 GRID ======================
-elif menu == "🔳 4×4 Grid Split":
-    st.title("🔳 4 × 4 Grid Split")
+elif menu == "grid":
+    st.title("🔳 4×4 Grid Split")
 
     grid_rows = 4
     grid_cols = 4
@@ -212,5 +209,8 @@ elif menu == "🔳 4×4 Grid Split":
             lower = (r+1)*tile_h if r < grid_rows-1 else h
             tiles.append(image.crop((left, upper, right, lower)))
 
+    st.write("📦 **Generated 16 tiles:**")
+
+    cols = st.columns(4)
     for i, tile in enumerate(tiles):
-        st.image(tile, caption=f"Tile {i+1}", width=200)
+        cols[i % 4].image(tile, caption=f"Tile {i+1}", use_column_width=True)
