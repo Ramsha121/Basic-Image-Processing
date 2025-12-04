@@ -10,6 +10,40 @@ st.set_page_config(
     page_icon="🎨",
     layout="wide"
 )
+st.markdown("""
+<style>
+/* ===================== HOME PAGE TITLE ===================== */
+h1.app-title {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(90deg, #6B1F1F, #A0522D, #FFDAB9);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(160,82,45,0.6);
+    animation: warmFlow 6s ease infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes warmFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===================== HOME PAGE SUBTITLE ===================== */
+h2.app-subtitle {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(90deg, #6E3B3B, #A0522D);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 6px rgba(160,82,45,0.4);
+    margin-bottom: 25px;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # -------------------- TITLE --------------------
 st.markdown("""
