@@ -12,65 +12,24 @@ st.set_page_config(
 )
 
 # -------------------- FONT AND ANIMATION STYLING --------------------
-# We load Google Fonts (Poppins for text, Playfair Display for titles)
+# Load Google Fonts (Playfair Display for titles, Poppins for text) and apply general styling
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap');
 
-/* ===================== HOME PAGE TITLE (ANIMATED) ===================== */
-h1.app-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 4.5rem; /* Slightly larger */
-    font-weight: 900;
-    text-align: center;
-    background: linear-gradient(90deg, #A0522D, #FFDAB9, #A0522D); /* Richer gradient */
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 20px rgba(160,82,45,0.7); /* Stronger shadow */
-    animation: warmFlow 6s ease infinite;
-    margin-bottom: 5px; /* Reduced gap */
-    letter-spacing: 2px;
-}
-
-@keyframes warmFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* ===================== HOME PAGE SUBTITLE ===================== */
-h2.app-subtitle {
-    font-family: 'Poppins', sans-serif; /* Use Poppins for subtitle */
-    font-size: 2rem;
-    font-weight: 600; /* Slightly lighter */
-    text-align: center;
-    background: linear-gradient(90deg, #6E3B3B, #A0522D);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 8px rgba(160,82,45,0.5);
-    margin-bottom: 30px; /* More space below subtitle */
-    letter-spacing: 1px;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# -------------------- TITLE --------------------
-st.markdown("""
-<h1 class='app-title'>✨ Image Processing Studio</h1>
-<h2 class='app-subtitle'>🎨 Clean • Aesthetic • Easy-to-use 🖌️</h2>
-""", unsafe_allow_html=True)
-
-# -------------------- GENERAL ELEMENT STYLING --------------------
-st.markdown("""
-<style>
 /* ===================== GENERAL FONT AND COLOR ===================== */
 /* Set default font for the entire app to Poppins */
 html, body, [class*="st-emotion-cache"] {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Override previous title styles for the specific elements below */
+/* Set Main App Background */
+.main {
+    background-color: #FFFFFF !important; /* Pure white */
+    color: #3B2F2F !important;
+}
+
+/* Headings Styling */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif !important;
     color: #4B1F1F !important; /* Dark maroon/brown */
@@ -87,10 +46,46 @@ p, span, li, label, .stMarkdown {
     font-weight: 400 !important;
 }
 
+/* ===================== HOME PAGE TITLE (ANIMATED) ===================== */
+h1.app-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem; 
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(90deg, #A0522D, #FFDAB9, #A0522D); 
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(160,82,45,0.7); 
+    animation: warmFlow 6s ease infinite;
+    margin-bottom: 5px; 
+    letter-spacing: 2px;
+}
+
+@keyframes warmFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===================== HOME PAGE SUBTITLE ===================== */
+h2.app-subtitle {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 2rem;
+    font-weight: 600; 
+    text-align: center;
+    background: linear-gradient(90deg, #6E3B3B, #A0522D);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 8px rgba(160,82,45,0.5);
+    margin-bottom: 30px; 
+    letter-spacing: 1px;
+}
+
 /* ===================== SIDEBAR ===================== */
 section[data-testid="stSidebar"] {
-    background: #FFFBF7 !important; /* Lighter, cleaner background */
-    border-right: 3px solid #A0522D; /* Thicker, defined border */
+    background: #FFFBF7 !important; 
+    border-right: 3px solid #A0522D; 
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -120,9 +115,9 @@ section[data-testid="stSidebar"] .stRadio label {
 
 /* Selected Radio Button */
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-    color: #800000 !important; /* Darker red for selected */
+    color: #800000 !important; 
     font-weight: 700 !important;
-    background-color: #FFEDE5; /* Light background for selection */
+    background-color: #FFEDE5; 
     border-radius: 5px;
     padding: 5px 10px;
 }
@@ -142,12 +137,7 @@ section[data-testid="stSidebar"] .stRadio label:hover {
     cursor: pointer;
 }
 
-/* ===================== MAIN PAGE ===================== */
-.main {
-    background-color: #FFFFFF !important; /* Pure white or very light cream */
-    color: #3B2F2F !important;
-}
-
+/* ===================== ALERT BOXES & UPLOADER ===================== */
 /* File Uploader button */
 .stFileUploader {
     border: 1px solid #A0522D;
@@ -158,17 +148,18 @@ section[data-testid="stSidebar"] .stRadio label:hover {
 
 /* Info Box */
 .stAlert > div[role="alert"] {
-    background-color: #FFFCF7; /* Very light background */
+    background-color: #FFFCF7; 
     border-left: 5px solid #A0522D !important;
     border-radius: 5px;
 }
+
 
 /* ===================== BUTTONS ===================== */
 .stButton>button, .stDownloadButton>button {
     font-family: 'Poppins', sans-serif !important;
     font-weight: 600 !important;
-    background-color: #A0522D !important; /* Sienna */
-    color: #FFF !important; /* White text for contrast */
+    background-color: #A0522D !important; 
+    color: #FFF !important; 
     border-radius: 8px !important;
     padding: 8px 20px !important;
     border: none !important;
@@ -176,30 +167,27 @@ section[data-testid="stSidebar"] .stRadio label:hover {
     transition: all 0.2s ease;
 }
 .stButton>button:hover, .stDownloadButton>button:hover {
-    background-color: #800000 !important; /* Darker Maroon */
+    background-color: #800000 !important; 
     box-shadow: 0 6px 15px rgba(128, 0, 0, 0.5);
     transform: translateY(-2px);
 }
 
 /* ===================== SLIDERS ===================== */
 .stSlider > div[data-baseweb="slider"] > div > div {
-    background: #FFDAB9 !important; /* Light peach for track */
+    background: #FFDAB9 !important; 
 }
 .stSlider > div[data-baseweb="slider"] > div > div > div {
-    background: #A0522D !important; /* Sienna for thumb */
+    background: #A0522D !important; 
     box-shadow: 0 0 8px #A0522D;
 }
 
 /* ===================== IMAGES ===================== */
 img {
-    border: 5px solid #FFDAB9 !important; /* Lighter, more aesthetic border */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Stronger, softer shadow */
-    border-radius: 12px; /* Softer corners */
+    border: 5px solid #FFDAB9 !important; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+    border-radius: 12px; 
     transition: transform 0.3s ease;
 }
-/* img:hover {
-    transform: scale(1.01);
-} */
 
 /* ===================== FOOTER ===================== */
 .footer {
@@ -214,6 +202,12 @@ img {
     font-family: 'Poppins', sans-serif;
 }
 </style>
+""", unsafe_allow_html=True)
+
+# -------------------- TITLE --------------------
+st.markdown("""
+<h1 class='app-title'>✨ Image Processing Studio</h1>
+<h2 class='app-subtitle'>🎨 Clean • Aesthetic • Easy-to-use 🖌️</h2>
 """, unsafe_allow_html=True)
 
 # -------------------- SIDE MENU --------------------
@@ -231,7 +225,6 @@ menu_options = {
     "🔳 4×4 Grid Split": "grid"
 }
 
-# The menu is now styled by the CSS
 menu_label = st.sidebar.radio("Choose an Option 👇", list(menu_options.keys()))
 menu = menu_options[menu_label]
 
@@ -239,12 +232,14 @@ menu = menu_options[menu_label]
 uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
 if uploaded_file is None:
     st.info("⬅️ Please upload an image from the **sidebar** to continue.")
-    # Optional: Add a subtle footer for aesthetic
     st.markdown('<div class="footer">Powered by Streamlit and OpenCV</div>', unsafe_allow_html=True)
     st.stop()
 
+# --- Image Processing Setup ---
 image = Image.open(uploaded_file)
+# Convert PIL Image to OpenCV (BGR)
 img_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+# Convert to grayscale for some operations
 gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
 w, h = image.size
 
@@ -260,7 +255,7 @@ if menu == "home":
     st.markdown("---")
     st.markdown("### 🔧 Features You Can Explore:")
     st.markdown("""
-    <ul style="list-style-type: '👉'; padding-left: 20px;">
+    <ul style="list-style-type: '👉'; padding-left: 20px; font-weight: 500;">
         <li>**Grayscale:** Convert to classic black and white.</li>
         <li>**Rotate:** Spin the image 90°, 180°, or 270°.</li>
         <li>**Mirror:** Flip the image horizontally.</li>
@@ -273,12 +268,11 @@ if menu == "home":
     st.markdown("---")
     st.markdown('<div class="footer">Ready to process! Select an option from the sidebar.</div>', unsafe_allow_html=True)
 
-
 # -------------------- IMAGE PROPERTIES --------------------
 elif menu == "props":
     st.title("📏 Image Properties")
     st.markdown("---")
-    col1, col2 = st.columns([1, 1.5]) # Adjust columns for better layout
+    col1, col2 = st.columns([1, 1.5]) 
     with col1:
         st.image(image, caption="Uploaded Image", use_column_width=True)
     with col2:
@@ -287,7 +281,6 @@ elif menu == "props":
         st.markdown(f"**🎯 PIL Mode:** <span style='font-weight: 700; color: #800000;'>{image.mode}</span> (e.g., RGB, L)", unsafe_allow_html=True)
         st.markdown(f"**🔍 OpenCV Shape:** <span style='font-weight: 700; color: #800000;'>{np.array(img_cv).shape}</span> (Height, Width, Channels)", unsafe_allow_html=True)
     st.markdown("---")
-
 
 # -------------------- GRAYSCALE --------------------
 elif menu == "gray":
@@ -323,7 +316,7 @@ elif menu == "mirror":
 elif menu == "contours":
     st.title("🟢 Contour Detection")
     st.markdown("---")
-    st.info("Contours are curves joining continuous points along a boundary, primarily used for object shape analysis.")
+    st.info("Contours are continuous curves used for object shape analysis.")
     edges = cv2.Canny(gray, 100, 200)
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contoured = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
@@ -337,7 +330,6 @@ elif menu == "contours":
     col2.image(contoured_img, caption="Contours Drawn", use_column_width=True)
     download_image(contoured_img, "contours.png")
     st.markdown("---")
-
 
 # -------------------- 50/50 SPLIT --------------------
 elif menu == "cut":
@@ -363,7 +355,7 @@ elif menu == "cut":
 elif menu == "custom":
     st.title("📐 Custom Percentage Vertical Cut")
     st.markdown("---")
-    percent = st.slider("Select left side percentage for vertical split:", 10, 90, 50, 5) # Default to 50
+    percent = st.slider("Select left side percentage for vertical split:", 10, 90, 50, 5) 
     cut_x = int((percent / 100) * w)
     p1 = image.crop((0, 0, cut_x, h))
     p2 = image.crop((cut_x, 0, w, h))
