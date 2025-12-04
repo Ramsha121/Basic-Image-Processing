@@ -32,7 +32,7 @@ html, body, [class*="st-emotion-cache"] {
 /* Headings Styling */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif !important;
-    color: #4B1F1F !important; /* Dark maroon/brown */
+    color: #4B1F1F !important; /* Dark maroon/brown (for content headings) */
     text-shadow: 0 0 5px rgba(160,82,45,0.3) !important;
     font-weight: 800 !important; /* Bold headings */
     margin-top: 1rem;
@@ -46,25 +46,24 @@ p, span, li, label, .stMarkdown {
     font-weight: 400 !important;
 }
 
-/* ===================== HOME PAGE TITLE (ANIMATED) - LIGHTER SHADE ===================== */
+/* ===================== HOME PAGE TITLE (RED/MAROON) ===================== */
 h1.app-title {
     font-family: 'Playfair Display', serif;
     font-size: 4.5rem; 
     font-weight: 900;
     text-align: center;
-    /* --- UPDATED GRADIENT FOR LIGHTER SHADE --- */
-    background: linear-gradient(90deg, #E9967A, #FFDAB9, #FAFAD2, #FFDAB9, #E9967A); 
-    /* Using Darksalmon, Mistyrose, LightGoldenrodYellow, Mistyrose, Darksalmon */
-    background-size: 300% 100%; /* Wider background for smooth flow */
+    /* --- NEW RED GRADIENT --- */
+    background: linear-gradient(90deg, #800000, #C21807, #FF3D3D); /* Maroon to Bright Red */
+    background-size: 200% 100%;
     -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 15px rgba(160,82,45,0.9); /* Stronger text shadow for visibility */
-    animation: warmFlow 6s ease infinite;
+    color: transparent; /* Text uses gradient */
+    text-shadow: 0 0 15px rgba(128, 0, 0, 0.5); /* Stronger red shadow */
+    animation: redFlow 6s ease infinite; /* Keep animation, but use a cleaner version */
     margin-bottom: 5px; 
     letter-spacing: 2px;
 }
 
-@keyframes warmFlow {
+@keyframes redFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -97,10 +96,10 @@ section[data-testid="stSidebar"] h2 {
     font-size: 1.8rem;
     text-align: center;
     font-weight: 900 !important;
-    background: linear-gradient(90deg, #800000, #A0522D);
+    background: linear-gradient(90deg, #800000, #C21807); /* Sidebar title also in Red */
     -webkit-background-clip: text;
     color: transparent !important;
-    text-shadow: 0 0 10px rgba(160,82,45,0.7);
+    text-shadow: 0 0 10px rgba(128, 0, 0, 0.7);
     padding: 15px 0;
     margin-top: 0;
     margin-bottom: 20px;
@@ -117,7 +116,7 @@ section[data-testid="stSidebar"] .stRadio label {
 
 /* Selected Radio Button */
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-    color: #800000 !important; 
+    color: #C21807 !important; /* Brighter Red for selected item */
     font-weight: 700 !important;
     background-color: #FFEDE5; 
     border-radius: 5px;
@@ -125,8 +124,8 @@ section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true']
 }
 
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
-    fill: #800000 !important;
-    stroke: #A0522D !important;
+    fill: #C21807 !important;
+    stroke: #800000 !important;
 }
 
 section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
@@ -151,7 +150,7 @@ section[data-testid="stSidebar"] .stRadio label:hover {
 /* Info Box */
 .stAlert > div[role="alert"] {
     background-color: #FFFCF7; 
-    border-left: 5px solid #A0522D !important;
+    border-left: 5px solid #C21807 !important; /* Red alert border */
     border-radius: 5px;
 }
 
@@ -160,17 +159,17 @@ section[data-testid="stSidebar"] .stRadio label:hover {
 .stButton>button, .stDownloadButton>button {
     font-family: 'Poppins', sans-serif !important;
     font-weight: 600 !important;
-    background-color: #A0522D !important; 
+    background-color: #C21807 !important; /* Primary Red Button */
     color: #FFF !important; 
     border-radius: 8px !important;
     padding: 8px 20px !important;
     border: none !important;
-    box-shadow: 0 4px 10px rgba(160, 82, 45, 0.4);
+    box-shadow: 0 4px 10px rgba(194, 24, 7, 0.5);
     transition: all 0.2s ease;
 }
 .stButton>button:hover, .stDownloadButton>button:hover {
     background-color: #800000 !important; 
-    box-shadow: 0 6px 15px rgba(128, 0, 0, 0.5);
+    box-shadow: 0 6px 15px rgba(128, 0, 0, 0.7);
     transform: translateY(-2px);
 }
 
@@ -179,8 +178,8 @@ section[data-testid="stSidebar"] .stRadio label:hover {
     background: #FFDAB9 !important; 
 }
 .stSlider > div[data-baseweb="slider"] > div > div > div {
-    background: #A0522D !important; 
-    box-shadow: 0 0 8px #A0522D;
+    background: #C21807 !important; /* Red Slider Thumb */
+    box-shadow: 0 0 8px #C21807;
 }
 
 /* ===================== IMAGES ===================== */
@@ -279,9 +278,9 @@ elif menu == "props":
         st.image(image, caption="Uploaded Image", use_column_width=True)
     with col2:
         st.markdown("### 📊 Image Details")
-        st.markdown(f"**🖼 Size (Width × Height):** <span style='font-weight: 700; color: #800000;'>{w} × {h}</span> pixels", unsafe_allow_html=True)
-        st.markdown(f"**🎯 PIL Mode:** <span style='font-weight: 700; color: #800000;'>{image.mode}</span> (e.g., RGB, L)", unsafe_allow_html=True)
-        st.markdown(f"**🔍 OpenCV Shape:** <span style='font-weight: 700; color: #800000;'>{np.array(img_cv).shape}</span> (Height, Width, Channels)", unsafe_allow_html=True)
+        st.markdown(f"**🖼 Size (Width × Height):** <span style='font-weight: 700; color: #C21807;'>{w} × {h}</span> pixels", unsafe_allow_html=True)
+        st.markdown(f"**🎯 PIL Mode:** <span style='font-weight: 700; color: #C21807;'>{image.mode}</span> (e.g., RGB, L)", unsafe_allow_html=True)
+        st.markdown(f"**🔍 OpenCV Shape:** <span style='font-weight: 700; color: #C21807;'>{np.array(img_cv).shape}</span> (Height, Width, Channels)", unsafe_allow_html=True)
     st.markdown("---")
 
 # -------------------- GRAYSCALE --------------------
@@ -325,7 +324,7 @@ elif menu == "contours":
     cv2.drawContours(contoured, contours, -1, (128,255,128), 2)
     contoured_img = Image.fromarray(cv2.cvtColor(contoured, cv2.COLOR_BGR2RGB))
     
-    st.write(f"✨ **Total Contours Found:** <span style='font-weight: 700; color: #800000;'>{len(contours)}</span>", unsafe_allow_html=True)
+    st.write(f"✨ **Total Contours Found:** <span style='font-weight: 700; color: #C21807;'>{len(contours)}</span>", unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     col1.image(edges, caption="Edge Detection (Canny)", use_column_width=True)
@@ -391,7 +390,7 @@ elif menu == "grid":
             lower = (r+1)*tile_h if r < grid_rows-1 else h
             tiles.append(image.crop((left, upper, right, lower)))
             
-    st.write(f"📦 **Generated <span style='font-weight: 700; color: #800000;'>{len(tiles)}</span> tiles:**", unsafe_allow_html=True)
+    st.write(f"📦 **Generated <span style='font-weight: 700; color: #C21807;'>{len(tiles)}</span> tiles:**", unsafe_allow_html=True)
     
     # Display tiles in a 4-column layout
     cols = st.columns(4)
