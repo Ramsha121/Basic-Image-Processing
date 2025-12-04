@@ -46,17 +46,19 @@ p, span, li, label, .stMarkdown {
     font-weight: 400 !important;
 }
 
-/* ===================== HOME PAGE TITLE (ANIMATED) ===================== */
+/* ===================== HOME PAGE TITLE (ANIMATED) - LIGHTER SHADE ===================== */
 h1.app-title {
     font-family: 'Playfair Display', serif;
     font-size: 4.5rem; 
     font-weight: 900;
     text-align: center;
-    background: linear-gradient(90deg, #A0522D, #FFDAB9, #A0522D); 
-    background-size: 200% 100%;
+    /* --- UPDATED GRADIENT FOR LIGHTER SHADE --- */
+    background: linear-gradient(90deg, #E9967A, #FFDAB9, #FAFAD2, #FFDAB9, #E9967A); 
+    /* Using Darksalmon, Mistyrose, LightGoldenrodYellow, Mistyrose, Darksalmon */
+    background-size: 300% 100%; /* Wider background for smooth flow */
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 0 0 20px rgba(160,82,45,0.7); 
+    text-shadow: 0 0 15px rgba(160,82,45,0.9); /* Stronger text shadow for visibility */
     animation: warmFlow 6s ease infinite;
     margin-bottom: 5px; 
     letter-spacing: 2px;
