@@ -77,6 +77,114 @@ def download_image(img, filename):
     img.save(buf, format="PNG")
     st.download_button("📥 Download Image", buf.getvalue(), file_name=filename)
 
+##--CSS--
+st.markdown("""
+<style>
+
+    /* ===================================================
+       🔥🔥🔥 GLOBAL FIRE RED THEME — FULL APP 🔥🔥🔥
+       =================================================== */
+
+    /* ------ PAGE BACKGROUND ------ */
+    .main {
+        background-color: #0d0000 !important;  /* deep black/red */
+        color: #ff4d4d !important;
+    }
+
+    /* ------ HEADINGS ------ */
+    h1, h2, h3, h4, h5, h6 {
+        color: #ff3333 !important;
+        text-shadow: 0 0 10px #ff1a1a;
+        font-weight: 900 !important;
+    }
+
+    /* ------ NORMAL TEXT ------ */
+    p, span, li, label {
+        color: #ff6666 !important;
+    }
+
+    /* ------ SIDEBAR BG ------ */
+    section[data-testid="stSidebar"] {
+        background-color: #1a0000 !important;
+        border-right: 2px solid #ff1a1a;
+    }
+
+    /* ------ SIDEBAR HEADER ------ */
+    section[data-testid="stSidebar"] h2 {
+        color: #ff3333 !important;
+        font-weight: 900 !important;
+        text-shadow: 0px 0px 8px #ff0000;
+    }
+
+    /* ------ SIDEBAR RADIO LABELS ------ */
+    section[data-testid="stSidebar"] .stRadio label {
+        color: #ff4d4d !important;
+        font-weight: 650 !important;
+        text-shadow: 0px 0px 6px #b30000;
+    }
+
+    /* Selected radio label */
+    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
+        color: #ff8080 !important;
+        font-weight: 900 !important;
+        text-shadow: 0px 0px 12px #ff3333;
+    }
+
+    /* Radio circle colors */
+    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
+        fill: #ff3333 !important;
+        stroke: #ff3333 !important;
+    }
+    section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
+        stroke: #ff1a1a !important;
+    }
+
+    /* Radio label hover */
+    section[data-testid="stSidebar"] .stRadio label:hover {
+        color: #ff9999 !important;
+        text-shadow: 0 0 14px #ff4d4d;
+        cursor: pointer;
+    }
+
+    /* ------ BUTTONS ------ */
+    .stButton>button {
+        background-color: #ff1a1a !important;
+        color: white !important;
+        border-radius: 10px !important;
+        padding: 10px 22px !important;
+        border: 1px solid #ff6666 !important;
+        box-shadow: 0 0 12px #ff1a1a;
+    }
+    .stButton>button:hover {
+        background-color: #ff3333 !important;
+        box-shadow: 0 0 20px #ff4d4d;
+    }
+
+    /* ------ SLIDER ------ */
+    .stSlider > div[data-baseweb="slider"] > div > div {
+        background: #ff1a1a !important;
+    }
+    .stSlider > div[data-baseweb="slider"] > div > div > div {
+        background: #ff3333 !important;
+        box-shadow: 0 0 10px #ff4d4d;
+    }
+
+    /* ------ INPUT FIELDS ------ */
+    input, textarea {
+        border: 1px solid #ff1a1a !important;
+        background-color: #330000 !important;
+        color: #ff6666 !important;
+    }
+
+    /* ------ IMAGE GLOW ------ */
+    img {
+        border: 3px solid #ff1a1a !important;
+        box-shadow: 0 0 15px #ff1a1a;
+        border-radius: 8px;
+    }
+
+</style>
+""", unsafe_allow_html=True)
 
 # ====================== HOME ======================
 if menu == "home":
