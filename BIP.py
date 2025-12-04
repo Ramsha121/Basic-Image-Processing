@@ -13,7 +13,7 @@ st.set_page_config(
 
 # -------------------- TITLE --------------------
 st.markdown("""
-<h1 class='app-title'>🌸 Warm Image Studio</h1>
+<h1 class='app-title'>🌸 Basic Image Processing Studio</h1>
 """, unsafe_allow_html=True)
 
 # -------------------- CSS STYLING --------------------
