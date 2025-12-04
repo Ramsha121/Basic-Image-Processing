@@ -119,6 +119,67 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+##-- gradient
+st.markdown("""
+<style>
+
+    /* ========== 🔥 ANIMATED GRADIENT TITLE ========== */
+    .animated-title {
+        font-size: 3.2rem;
+        font-weight: 900;
+        text-align: center;
+        background: linear-gradient(90deg, #ff0000, #ff7b00, #ffcc00, #ff7b00, #ff0000);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: flameFlow 6s ease infinite;
+        text-shadow: 0 0 25px rgba(255,80,0,0.4);
+        margin-bottom: 0.8rem;
+    }
+
+    @keyframes flameFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* ========== ✨ FADE-IN SECTIONS ========== */
+    .fadein {
+        animation: fadeIn 1.5s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0px); }
+    }
+
+    /* ========== 📦 QUOTE CARD ========== */
+    .quote-card {
+        padding: 18px;
+        margin-top: 20px;
+        background: rgba(255, 85, 0, 0.07);
+        border-left: 5px solid #ff5e00;
+        border-radius: 10px;
+        font-size: 1.05rem;
+        font-style: italic;
+        color: #ff6a00;
+        box-shadow: 0px 0px 12px rgba(255, 120, 0, 0.25);
+    }
+
+    /* ========== 🙏 FOOTER ========== */
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ff8800;
+        text-shadow: 0 0 10px rgba(255, 70, 0, 0.6);
+        animation: fadeIn 2s ease forwards;
+    }
+
+</style>
+""", unsafe_allow_html=True)
 
 
 # -------------------- SIDE MENU WITH FIXED LABELS --------------------
