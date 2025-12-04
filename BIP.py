@@ -233,7 +233,7 @@ menu = menu_options[menu_label]
 uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
 if uploaded_file is None:
     st.info("⬅️ Please upload an image from the **sidebar** to continue.")
-    st.markdown('<div class="footer">Powered by Streamlit and OpenCV</div>', unsafe_allow_html=True)
+    st.markdown('<div class="footer">Pixels fear me, Python loves me — Made by Ramsha</div>', unsafe_allow_html=True)
     st.stop()
 
 # --- Image Processing Setup ---
