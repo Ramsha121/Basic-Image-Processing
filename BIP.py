@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# -------------------- FONT AND ANIMATION STYLING --------------------
+# -------------------- FONT AND ANIMATION STYLING (GOLDEN THEME) --------------------
 # Load Google Fonts (Playfair Display for titles, Poppins for text) and apply general styling
 st.markdown("""
 <style>
@@ -46,24 +46,24 @@ p, span, li, label, .stMarkdown {
     font-weight: 400 !important;
 }
 
-/* ===================== HOME PAGE TITLE (RED/MAROON) ===================== */
+/* ===================== HOME PAGE TITLE (GOLDEN) ===================== */
 h1.app-title {
     font-family: 'Playfair Display', serif;
     font-size: 4.5rem; 
     font-weight: 900;
     text-align: center;
-    /* --- NEW RED GRADIENT --- */
-    background: linear-gradient(90deg, #800000, #C21807, #FF3D3D); /* Maroon to Bright Red */
+    /* --- NEW GOLDEN GRADIENT --- */
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700, #DAA520); /* Gold, Orange, Yellow-Gold, Goldenrod */
     background-size: 200% 100%;
     -webkit-background-clip: text;
     color: transparent; /* Text uses gradient */
-    text-shadow: 0 0 15px rgba(128, 0, 0, 0.5); /* Stronger red shadow */
-    animation: redFlow 6s ease infinite; /* Keep animation, but use a cleaner version */
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Luminous golden shadow */
+    animation: goldFlow 6s ease infinite; 
     margin-bottom: 5px; 
     letter-spacing: 2px;
 }
 
-@keyframes redFlow {
+@keyframes goldFlow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
@@ -75,7 +75,8 @@ h2.app-subtitle {
     font-size: 2rem;
     font-weight: 600; 
     text-align: center;
-    background: linear-gradient(90deg, #6E3B3B, #A0522D);
+    /* Retain original accent color for contrast */
+    background: linear-gradient(90deg, #6E3B3B, #A0522D); 
     -webkit-background-clip: text;
     color: transparent;
     text-shadow: 0 0 8px rgba(160,82,45,0.5);
@@ -96,7 +97,8 @@ section[data-testid="stSidebar"] h2 {
     font-size: 1.8rem;
     text-align: center;
     font-weight: 900 !important;
-    background: linear-gradient(90deg, #800000, #C21807); /* Sidebar title also in Red */
+    /* Sidebar title accent */
+    background: linear-gradient(90deg, #800000, #A0522D); 
     -webkit-background-clip: text;
     color: transparent !important;
     text-shadow: 0 0 10px rgba(128, 0, 0, 0.7);
@@ -116,7 +118,7 @@ section[data-testid="stSidebar"] .stRadio label {
 
 /* Selected Radio Button */
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-    color: #C21807 !important; /* Brighter Red for selected item */
+    color: #A0522D !important; /* Sienna for selected item */
     font-weight: 700 !important;
     background-color: #FFEDE5; 
     border-radius: 5px;
@@ -124,7 +126,7 @@ section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true']
 }
 
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
-    fill: #C21807 !important;
+    fill: #A0522D !important;
     stroke: #800000 !important;
 }
 
@@ -150,7 +152,7 @@ section[data-testid="stSidebar"] .stRadio label:hover {
 /* Info Box */
 .stAlert > div[role="alert"] {
     background-color: #FFFCF7; 
-    border-left: 5px solid #C21807 !important; /* Red alert border */
+    border-left: 5px solid #A0522D !important; /* Sienna alert border */
     border-radius: 5px;
 }
 
@@ -159,12 +161,12 @@ section[data-testid="stSidebar"] .stRadio label:hover {
 .stButton>button, .stDownloadButton>button {
     font-family: 'Poppins', sans-serif !important;
     font-weight: 600 !important;
-    background-color: #C21807 !important; /* Primary Red Button */
+    background-color: #A0522D !important; /* Sienna Button */
     color: #FFF !important; 
     border-radius: 8px !important;
     padding: 8px 20px !important;
     border: none !important;
-    box-shadow: 0 4px 10px rgba(194, 24, 7, 0.5);
+    box-shadow: 0 4px 10px rgba(160, 82, 45, 0.5);
     transition: all 0.2s ease;
 }
 .stButton>button:hover, .stDownloadButton>button:hover {
@@ -178,8 +180,8 @@ section[data-testid="stSidebar"] .stRadio label:hover {
     background: #FFDAB9 !important; 
 }
 .stSlider > div[data-baseweb="slider"] > div > div > div {
-    background: #C21807 !important; /* Red Slider Thumb */
-    box-shadow: 0 0 8px #C21807;
+    background: #A0522D !important; /* Sienna Slider Thumb */
+    box-shadow: 0 0 8px #A0522D;
 }
 
 /* ===================== IMAGES ===================== */
@@ -206,6 +208,7 @@ img {
 """, unsafe_allow_html=True)
 
 # -------------------- TITLE --------------------
+# The '✨' emoji will now be a golden color due to the gradient applied to h1.app-title
 st.markdown("""
 <h1 class='app-title'>✨ Image Processing Studio</h1>
 <h2 class='app-subtitle'>🎨 Clean • Aesthetic • Easy-to-use 🖌️</h2>
@@ -233,7 +236,7 @@ menu = menu_options[menu_label]
 uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
 if uploaded_file is None:
     st.info("⬅️ Please upload an image from the **sidebar** to continue.")
-    st.markdown('<div class="footer">Pixels fear me, Python loves me — Made by Ramsha</div>', unsafe_allow_html=True)
+    st.markdown('<div class="footer">Powered by Streamlit and OpenCV</div>', unsafe_allow_html=True)
     st.stop()
 
 # --- Image Processing Setup ---
@@ -278,9 +281,9 @@ elif menu == "props":
         st.image(image, caption="Uploaded Image", use_column_width=True)
     with col2:
         st.markdown("### 📊 Image Details")
-        st.markdown(f"**🖼 Size (Width × Height):** <span style='font-weight: 700; color: #C21807;'>{w} × {h}</span> pixels", unsafe_allow_html=True)
-        st.markdown(f"**🎯 PIL Mode:** <span style='font-weight: 700; color: #C21807;'>{image.mode}</span> (e.g., RGB, L)", unsafe_allow_html=True)
-        st.markdown(f"**🔍 OpenCV Shape:** <span style='font-weight: 700; color: #C21807;'>{np.array(img_cv).shape}</span> (Height, Width, Channels)", unsafe_allow_html=True)
+        st.markdown(f"**🖼 Size (Width × Height):** <span style='font-weight: 700; color: #A0522D;'>{w} × {h}</span> pixels", unsafe_allow_html=True)
+        st.markdown(f"**🎯 PIL Mode:** <span style='font-weight: 700; color: #A0522D;'>{image.mode}</span> (e.g., RGB, L)", unsafe_allow_html=True)
+        st.markdown(f"**🔍 OpenCV Shape:** <span style='font-weight: 700; color: #A0522D;'>{np.array(img_cv).shape}</span> (Height, Width, Channels)", unsafe_allow_html=True)
     st.markdown("---")
 
 # -------------------- GRAYSCALE --------------------
@@ -324,7 +327,7 @@ elif menu == "contours":
     cv2.drawContours(contoured, contours, -1, (128,255,128), 2)
     contoured_img = Image.fromarray(cv2.cvtColor(contoured, cv2.COLOR_BGR2RGB))
     
-    st.write(f"✨ **Total Contours Found:** <span style='font-weight: 700; color: #C21807;'>{len(contours)}</span>", unsafe_allow_html=True)
+    st.write(f"✨ **Total Contours Found:** <span style='font-weight: 700; color: #A0522D;'>{len(contours)}</span>", unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     col1.image(edges, caption="Edge Detection (Canny)", use_column_width=True)
@@ -390,7 +393,7 @@ elif menu == "grid":
             lower = (r+1)*tile_h if r < grid_rows-1 else h
             tiles.append(image.crop((left, upper, right, lower)))
             
-    st.write(f"📦 **Generated <span style='font-weight: 700; color: #C21807;'>{len(tiles)}</span> tiles:**", unsafe_allow_html=True)
+    st.write(f"📦 **Generated <span style='font-weight: 700; color: #A0522D;'>{len(tiles)}</span> tiles:**", unsafe_allow_html=True)
     
     # Display tiles in a 4-column layout
     cols = st.columns(4)
