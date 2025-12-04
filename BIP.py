@@ -29,7 +29,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# -------------------- SIDE MENU WITH FIXED LABELS --------------------
+# -------------------- SIDE MENU --------------------
 st.sidebar.title("📌 Image Processing Menu")
 
 menu_options = {
