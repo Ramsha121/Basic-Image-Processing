@@ -10,19 +10,27 @@ st.set_page_config(
     page_icon="🎨",
     layout="wide"
 )
+
+# -------------------- FONT AND ANIMATION STYLING --------------------
+# We load Google Fonts (Poppins for text, Playfair Display for titles)
 st.markdown("""
 <style>
-/* ===================== HOME PAGE TITLE ===================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap');
+
+/* ===================== HOME PAGE TITLE (ANIMATED) ===================== */
 h1.app-title {
-    font-size: 4rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem; /* Slightly larger */
     font-weight: 900;
     text-align: center;
-    background: linear-gradient(90deg, #6B1F1F, #A0522D, #FFDAB9);
+    background: linear-gradient(90deg, #A0522D, #FFDAB9, #A0522D); /* Richer gradient */
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 0 0 15px rgba(160,82,45,0.6);
+    text-shadow: 0 0 20px rgba(160,82,45,0.7); /* Stronger shadow */
     animation: warmFlow 6s ease infinite;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Reduced gap */
+    letter-spacing: 2px;
 }
 
 @keyframes warmFlow {
@@ -33,14 +41,16 @@ h1.app-title {
 
 /* ===================== HOME PAGE SUBTITLE ===================== */
 h2.app-subtitle {
+    font-family: 'Poppins', sans-serif; /* Use Poppins for subtitle */
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 600; /* Slightly lighter */
     text-align: center;
     background: linear-gradient(90deg, #6E3B3B, #A0522D);
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 0 0 6px rgba(160,82,45,0.4);
-    margin-bottom: 25px;
+    text-shadow: 0 0 8px rgba(160,82,45,0.5);
+    margin-bottom: 30px; /* More space below subtitle */
+    letter-spacing: 1px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -48,162 +58,166 @@ h2.app-subtitle {
 # -------------------- TITLE --------------------
 st.markdown("""
 <h1 class='app-title'>✨ Image Processing Studio</h1>
-<h2 class='app-subtitle'>✨ Clean • Aesthetic • Easy-to-use ✨</h2>
+<h2 class='app-subtitle'>🎨 Clean • Aesthetic • Easy-to-use 🖌️</h2>
 """, unsafe_allow_html=True)
 
-# -------------------- CSS STYLING --------------------
+# -------------------- GENERAL ELEMENT STYLING --------------------
 st.markdown("""
 <style>
-/* ===================== HOME PAGE TITLE ===================== */
-h1.app-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    text-align: center;
-    color: #4B1F1F;  /* Dark maroon */
-    text-shadow: 1px 1px 8px rgba(160,82,45,0.5);
-    margin-bottom: 10px;
+/* ===================== GENERAL FONT AND COLOR ===================== */
+/* Set default font for the entire app to Poppins */
+html, body, [class*="st-emotion-cache"] {
+    font-family: 'Poppins', sans-serif;
 }
 
-h2.app-subtitle {
-    font-size: 1.8rem;
-    font-weight: 700;
-    text-align: center;
-    background: linear-gradient(90deg, #6E3B3B, #A0522D);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 5px rgba(160,82,45,0.4);
-    margin-bottom: 25px;
+/* Override previous title styles for the specific elements below */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif !important;
+    color: #4B1F1F !important; /* Dark maroon/brown */
+    text-shadow: 0 0 5px rgba(160,82,45,0.3) !important;
+    font-weight: 800 !important; /* Bold headings */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* General text (p, span, li, label) */
+p, span, li, label, .stMarkdown {
+    font-family: 'Poppins', sans-serif !important;
+    color: #4B3B3B !important;
+    font-weight: 400 !important;
 }
 
 /* ===================== SIDEBAR ===================== */
 section[data-testid="stSidebar"] {
-    background: #FFF5E6 !important;
-    border-right: 2px solid #A0522D;
+    background: #FFFBF7 !important; /* Lighter, cleaner background */
+    border-right: 3px solid #A0522D; /* Thicker, defined border */
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Sidebar Title */
 section[data-testid="stSidebar"] h2 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.8rem;
     text-align: center;
     font-weight: 900 !important;
-    background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9);
+    background: linear-gradient(90deg, #800000, #A0522D);
     -webkit-background-clip: text;
     color: transparent !important;
-    text-shadow: 0 0 8px rgba(160,82,45,0.6);
+    text-shadow: 0 0 10px rgba(160,82,45,0.7);
+    padding: 15px 0;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
+/* Sidebar Radio Buttons (Menu) */
 section[data-testid="stSidebar"] .stRadio label {
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    padding: 3px 0px;
-    color: #4B2E2E !important;
+    font-weight: 500 !important;
+    font-size: 1.05rem !important;
+    padding: 5px 10px;
+    color: #3B2F2F !important;
+    transition: all 0.2s ease;
 }
 
+/* Selected Radio Button */
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-    color: #6E3B3B !important;
-    font-weight: 800 !important;
+    color: #800000 !important; /* Darker red for selected */
+    font-weight: 700 !important;
+    background-color: #FFEDE5; /* Light background for selection */
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
 section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
-    fill: #6E3B3B !important;
+    fill: #800000 !important;
     stroke: #A0522D !important;
 }
 
 section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
-    stroke: #8B4B4B !important;
+    stroke: #A0522D !important;
 }
 
 section[data-testid="stSidebar"] .stRadio label:hover {
     color: #A0522D !important;
-    text-shadow: 0 0 8px #A0522D;
+    text-shadow: 0 0 5px #A0522D;
     cursor: pointer;
 }
 
 /* ===================== MAIN PAGE ===================== */
 .main {
-    background-color: #FFF8F2 !important;
+    background-color: #FFFFFF !important; /* Pure white or very light cream */
     color: #3B2F2F !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: #3B2F2F !important;
-    text-shadow: 0 0 5px rgba(160,82,45,0.2);
-    font-weight: 900 !important;
+/* File Uploader button */
+.stFileUploader {
+    border: 1px solid #A0522D;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #FFFDFB;
 }
 
-p, span, li, label {
-    color: #4B3B3B !important;
+/* Info Box */
+.stAlert > div[role="alert"] {
+    background-color: #FFFCF7; /* Very light background */
+    border-left: 5px solid #A0522D !important;
+    border-radius: 5px;
 }
 
 /* ===================== BUTTONS ===================== */
-.stButton>button {
-    background-color: #A0522D !important;
-    color: #FFF5E6 !important;
-    border-radius: 10px !important;
-    padding: 10px 22px !important;
-    border: 1px solid #8B4B4B !important;
-    box-shadow: 0 0 8px #8B4B4B;
+.stButton>button, .stDownloadButton>button {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    background-color: #A0522D !important; /* Sienna */
+    color: #FFF !important; /* White text for contrast */
+    border-radius: 8px !important;
+    padding: 8px 20px !important;
+    border: none !important;
+    box-shadow: 0 4px 10px rgba(160, 82, 45, 0.4);
+    transition: all 0.2s ease;
 }
-.stButton>button:hover {
-    background-color: #800000 !important;
-    box-shadow: 0 0 12px #A0522D;
+.stButton>button:hover, .stDownloadButton>button:hover {
+    background-color: #800000 !important; /* Darker Maroon */
+    box-shadow: 0 6px 15px rgba(128, 0, 0, 0.5);
+    transform: translateY(-2px);
 }
 
 /* ===================== SLIDERS ===================== */
 .stSlider > div[data-baseweb="slider"] > div > div {
-    background: #A0522D !important;
+    background: #FFDAB9 !important; /* Light peach for track */
 }
 .stSlider > div[data-baseweb="slider"] > div > div > div {
-    background: #800000 !important;
-    box-shadow: 0 0 6px #A0522D;
-}
-
-/* ===================== INPUT FIELDS ===================== */
-input, textarea {
-    border: 1px solid #A0522D !important;
-    background-color: #FFF5E6 !important;
-    color: #3B2F2F !important;
+    background: #A0522D !important; /* Sienna for thumb */
+    box-shadow: 0 0 8px #A0522D;
 }
 
 /* ===================== IMAGES ===================== */
 img {
-    border: 3px solid #A0522D !important;
-    box-shadow: 0 0 12px #FFDAB9;
-    border-radius: 8px;
+    border: 5px solid #FFDAB9 !important; /* Lighter, more aesthetic border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Stronger, softer shadow */
+    border-radius: 12px; /* Softer corners */
+    transition: transform 0.3s ease;
 }
-
-/* ===================== ANIMATED TITLE ===================== */
-.animated-title {
-    font-size: 3.2rem;
-    font-weight: 900;
-    text-align: center;
-    background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9, #A0522D, #800000);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: warmFlow 6s ease infinite;
-    text-shadow: 0 0 15px rgba(160,82,45,0.4);
-    margin-bottom: 1rem;
-}
-
-@keyframes warmFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+/* img:hover {
+    transform: scale(1.01);
+} */
 
 /* ===================== FOOTER ===================== */
 .footer {
     text-align: center;
-    margin-top: 40px;
-    font-size: 1.15rem;
-    font-weight: 700;
+    margin-top: 50px;
+    padding-top: 15px;
+    border-top: 1px dashed #A0522D;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #6E3B3B;
-    text-shadow: 0 0 8px rgba(160,82,45,0.4);
+    text-shadow: 0 0 5px rgba(160,82,45,0.3);
+    font-family: 'Poppins', sans-serif;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # -------------------- SIDE MENU --------------------
-st.sidebar.title("📌 Image Processing Menu")
+st.sidebar.markdown('<h2 class="sidebar-title">📌 Image Processing Menu</h2>', unsafe_allow_html=True)
 
 menu_options = {
     "🏠 Home": "home",
@@ -217,6 +231,7 @@ menu_options = {
     "🔳 4×4 Grid Split": "grid"
 }
 
+# The menu is now styled by the CSS
 menu_label = st.sidebar.radio("Choose an Option 👇", list(menu_options.keys()))
 menu = menu_options[menu_label]
 
@@ -224,6 +239,8 @@ menu = menu_options[menu_label]
 uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
 if uploaded_file is None:
     st.info("⬅️ Please upload an image from the **sidebar** to continue.")
+    # Optional: Add a subtle footer for aesthetic
+    st.markdown('<div class="footer">Powered by Streamlit and OpenCV</div>', unsafe_allow_html=True)
     st.stop()
 
 image = Image.open(uploaded_file)
@@ -240,102 +257,138 @@ def download_image(img, filename):
 # -------------------- HOME --------------------
 if menu == "home":
     st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.markdown("---")
+    st.markdown("### 🔧 Features You Can Explore:")
     st.markdown("""
-    ### 🔧 Features You Can Use:
-    - Grayscale  
-    - Rotate  
-    - Mirror  
-    - Contours  
-    - 50-50 Split  
-    - Custom Percentage Split  
-    - 4×4 Grid Tiles  
+    <ul style="list-style-type: '👉'; padding-left: 20px;">
+        <li>**Grayscale:** Convert to classic black and white.</li>
+        <li>**Rotate:** Spin the image 90°, 180°, or 270°.</li>
+        <li>**Mirror:** Flip the image horizontally.</li>
+        <li>**Contours:** Outline the shapes and objects in the image.</li>
+        <li>**50-50 Split:** Cut the image perfectly in half (vertical/horizontal).</li>
+        <li>**Custom Split:** Slice the image vertically by a custom percentage.</li>
+        <li>**4×4 Grid:** Break the image into 16 equal tiles.</li>
+    </ul>
+    """, unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown('<div class="footer">Ready to process! Select an option from the sidebar.</div>', unsafe_allow_html=True)
 
-    👉 Choose a feature using the sidebar!
-    """)
 
 # -------------------- IMAGE PROPERTIES --------------------
 elif menu == "props":
     st.title("📏 Image Properties")
-    col1, col2 = st.columns(2)
+    st.markdown("---")
+    col1, col2 = st.columns([1, 1.5]) # Adjust columns for better layout
     with col1:
         st.image(image, caption="Uploaded Image", use_column_width=True)
     with col2:
-        st.write(f"🖼 **Size:** {w} × {h}")
-        st.write(f"🎯 **Mode:** {image.mode}")
-        st.write(f"🔍 **Shape:** {np.array(img_cv).shape}")
+        st.markdown("### 📊 Image Details")
+        st.markdown(f"**🖼 Size (Width × Height):** <span style='font-weight: 700; color: #800000;'>{w} × {h}</span> pixels", unsafe_allow_html=True)
+        st.markdown(f"**🎯 PIL Mode:** <span style='font-weight: 700; color: #800000;'>{image.mode}</span> (e.g., RGB, L)", unsafe_allow_html=True)
+        st.markdown(f"**🔍 OpenCV Shape:** <span style='font-weight: 700; color: #800000;'>{np.array(img_cv).shape}</span> (Height, Width, Channels)", unsafe_allow_html=True)
+    st.markdown("---")
+
 
 # -------------------- GRAYSCALE --------------------
 elif menu == "gray":
     st.title("⚫ Grayscale Image")
+    st.markdown("---")
+    st.info("Grayscale conversion removes color information, leaving only luminance.")
     gray_img = Image.fromarray(gray)
-    st.image(gray_img, caption="Grayscale", use_column_width=True)
+    st.image(gray_img, caption="Grayscale Output", use_column_width=True)
     download_image(gray_img, "grayscale.png")
+    st.markdown("---")
 
 # -------------------- ROTATE --------------------
 elif menu == "rotate":
     st.title("🔄 Rotate Image")
+    st.markdown("---")
     angle = st.radio("Choose rotation:", [90, 180, 270], horizontal=True)
     rotated = image.rotate(angle, expand=True)
     st.image(rotated, caption=f"Rotated {angle}°", use_column_width=True)
     download_image(rotated, f"rotated_{angle}.png")
+    st.markdown("---")
 
 # -------------------- MIRROR --------------------
 elif menu == "mirror":
     st.title("🪞 Mirror Image")
+    st.markdown("---")
+    st.info("This performs a horizontal flip (left-to-right mirror).")
     mirrored = image.transpose(Image.FLIP_LEFT_RIGHT)
-    st.image(mirrored, caption="Mirrored Image", use_column_width=True)
+    st.image(mirrored, caption="Horizontally Mirrored Image", use_column_width=True)
     download_image(mirrored, "mirrored.png")
+    st.markdown("---")
 
 # -------------------- CONTOURS --------------------
 elif menu == "contours":
     st.title("🟢 Contour Detection")
+    st.markdown("---")
+    st.info("Contours are curves joining continuous points along a boundary, primarily used for object shape analysis.")
     edges = cv2.Canny(gray, 100, 200)
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contoured = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
     cv2.drawContours(contoured, contours, -1, (128,255,128), 2)
     contoured_img = Image.fromarray(cv2.cvtColor(contoured, cv2.COLOR_BGR2RGB))
-    st.write(f"✨ **Contours Found:** {len(contours)}")
+    
+    st.write(f"✨ **Total Contours Found:** <span style='font-weight: 700; color: #800000;'>{len(contours)}</span>", unsafe_allow_html=True)
+    
     col1, col2 = st.columns(2)
-    col1.image(edges, caption="Edges", use_column_width=True)
-    col2.image(contoured_img, caption="Contours", use_column_width=True)
+    col1.image(edges, caption="Edge Detection (Canny)", use_column_width=True)
+    col2.image(contoured_img, caption="Contours Drawn", use_column_width=True)
     download_image(contoured_img, "contours.png")
+    st.markdown("---")
+
 
 # -------------------- 50/50 SPLIT --------------------
 elif menu == "cut":
     st.title("✂ Vertical & Horizontal 50/50 Cut")
+    st.markdown("---")
     left = image.crop((0, 0, w//2, h))
     right = image.crop((w//2, 0, w, h))
     top = image.crop((0, 0, w, h//2))
     bottom = image.crop((0, h//2, w, h))
-    st.subheader("📌 Vertical (Left / Right)")
+    
+    st.markdown("### 📌 Vertical Split (Left / Right)")
     col1, col2 = st.columns(2)
-    col1.image(left, caption="Left Half", use_column_width=True)
-    col2.image(right, caption="Right Half", use_column_width=True)
-    st.subheader("📌 Horizontal (Top / Bottom)")
+    col1.image(left, caption="Left Half (50%)", use_column_width=True)
+    col2.image(right, caption="Right Half (50%)", use_column_width=True)
+    
+    st.markdown("### 📌 Horizontal Split (Top / Bottom)")
     col3, col4 = st.columns(2)
-    col3.image(top, caption="Top Half", use_column_width=True)
-    col4.image(bottom, caption="Bottom Half", use_column_width=True)
+    col3.image(top, caption="Top Half (50%)", use_column_width=True)
+    col4.image(bottom, caption="Bottom Half (50%)", use_column_width=True)
+    st.markdown("---")
 
 # -------------------- CUSTOM PERCENT SPLIT --------------------
 elif menu == "custom":
-    st.title("📐 Custom Percentage Cut")
-    percent = st.slider("Select left side %:", 10, 90, 80)
+    st.title("📐 Custom Percentage Vertical Cut")
+    st.markdown("---")
+    percent = st.slider("Select left side percentage for vertical split:", 10, 90, 50, 5) # Default to 50
     cut_x = int((percent / 100) * w)
     p1 = image.crop((0, 0, cut_x, h))
     p2 = image.crop((cut_x, 0, w, h))
-    st.subheader(f"🔸 Left: {percent}%")
-    st.image(p1)
-    st.subheader(f"🔹 Right: {100 - percent}%")
-    st.image(p2)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"### 🔸 Left: {percent}%")
+        st.image(p1, caption=f"Left {percent}% Portion", use_column_width=True)
+    with col2:
+        st.markdown(f"### 🔹 Right: {100 - percent}%")
+        st.image(p2, caption=f"Right {100 - percent}% Portion", use_column_width=True)
+    st.markdown("---")
+
 
 # -------------------- 4×4 GRID --------------------
 elif menu == "grid":
-    st.title("🔳 4×4 Grid Split")
+    st.title("🔳 4×4 Grid Split (16 Tiles)")
+    st.markdown("---")
     grid_rows = 4
     grid_cols = 4
     tile_w = w // grid_cols
     tile_h = h // grid_rows
     tiles = []
+    
+    # Calculate and crop tiles
     for r in range(grid_rows):
         for c in range(grid_cols):
             left = c * tile_w
@@ -343,7 +396,15 @@ elif menu == "grid":
             right = (c+1)*tile_w if c < grid_cols-1 else w
             lower = (r+1)*tile_h if r < grid_rows-1 else h
             tiles.append(image.crop((left, upper, right, lower)))
-    st.write("📦 **Generated 16 tiles:**")
+            
+    st.write(f"📦 **Generated <span style='font-weight: 700; color: #800000;'>{len(tiles)}</span> tiles:**", unsafe_allow_html=True)
+    
+    # Display tiles in a 4-column layout
     cols = st.columns(4)
     for i, tile in enumerate(tiles):
         cols[i % 4].image(tile, caption=f"Tile {i+1}", use_column_width=True)
+    st.markdown("---")
+
+# Add a subtle footer at the end of every active page
+if uploaded_file is not None:
+    st.markdown('<div class="footer">Thank you for using the Image Processing Studio!</div>', unsafe_allow_html=True)
