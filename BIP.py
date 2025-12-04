@@ -29,6 +29,20 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+        /* Sidebar title to red */
+        .css-1d391kg, .css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3 {
+            color: red !important;
+        }
+        /* Streamlit sidebar header fix for newer versions */
+        section[data-testid="stSidebar"] h2 {
+            color: red !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # -------------------- SIDE MENU WITH FIXED LABELS --------------------
 st.sidebar.title("📌 Image Processing Menu")
 
