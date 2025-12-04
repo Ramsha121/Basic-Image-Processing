@@ -16,21 +16,33 @@ st.markdown("""
 <h1 class='app-title'>✨ Image Processing Studio</h1>
 """, unsafe_allow_html=True)
 
+
 # -------------------- CSS STYLING --------------------
 st.markdown("""
 <style>
-    /* ===================== TITLE ===================== */
-    .app-title {
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 900;
-        background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9);
-        -webkit-background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 10px rgba(160,82,45,0.5);
-        margin-bottom: 25px;
-        font-family: 'Segoe UI', sans-serif;
-    }
+/* ===================== HOME PAGE TITLE ===================== */
+h1.app-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-align: center;
+    color: #4B1F1F;  /* Dark maroon */
+    text-shadow: 1px 1px 8px rgba(160,82,45,0.5);
+    margin-bottom: 10px;
+}
+
+h2, .stSubheader {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: #6E3B3B;  /* Warm brown */
+    background: linear-gradient(90deg, #6E3B3B, #A0522D);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(160,82,45,0.4);
+}
+</style>
+""", unsafe_allow_html=True)
+
 
     /* ===================== SIDEBAR ===================== */
     section[data-testid="stSidebar"] {
