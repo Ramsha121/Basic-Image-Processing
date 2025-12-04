@@ -10,6 +10,89 @@ st.set_page_config(
     page_icon="🎨",
     layout="wide"
 )
+st.markdown("""
+<h1 class='app-title'>🔥 Basic Image Processing Studio</h1>
+""", unsafe_allow_html=True)
+##--3 color gradient font 
+st.markdown("""
+<style>
+
+    /* ================ 🔥 TITLE STYLING ================ */
+    .app-title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(90deg, #ff0000, #ff8800, #ffcc00);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 20px rgba(255,80,0,0.6);
+        margin-bottom: 20px;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* ================ 🔥 SIDEBAR BACKGROUND ================ */
+    section[data-testid="stSidebar"] {
+        background: #180000 !important;
+        border-right: 2px solid #ff3300;
+    }
+
+    /* ================ 🔥 SIDEBAR RADIO LABELS ================ */
+    section[data-testid="stSidebar"] .stRadio label {
+        font-weight: 700 !important;
+        font-size: 1.05rem !important;
+        padding: 3px 0px;
+        
+        /* Fire Gradient Text 🎨 */
+        background: linear-gradient(90deg, #ff3333, #ff9900, #ffcc33);
+        -webkit-background-clip: text;
+        color: transparent !important;
+
+        text-shadow: 0px 0px 8px rgba(255,60,0,0.4);
+    }
+
+    /* ================ 🔥 SELECTED RADIO OPTION ================ */
+    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
+        background: linear-gradient(90deg, #ff6600, #ffaa00, #ffee55);
+        -webkit-background-clip: text;
+        color: transparent !important;
+
+        text-shadow: 0 0 10px rgba(255,150,0,0.8);
+        font-size: 1.15rem !important;
+    }
+
+    /* Radio circle selected */
+    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
+        fill: #ff6600 !important;
+        stroke: #ffcc00 !important;
+    }
+
+    /* Radio circle unselected */
+    section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
+        stroke: #ff6600 !important;
+    }
+
+    /* ================ 🔥 SIDEBAR TITLE ================ */
+    section[data-testid="stSidebar"] h2 {
+        text-align: center;
+        font-weight: 900 !important;
+        margin-bottom: 15px;
+
+        background: linear-gradient(90deg, #ff3333, #ff9900, #ffee33);
+        -webkit-background-clip: text;
+        color: transparent !important;
+
+        text-shadow: 0 0 12px rgba(255,80,0,0.8);
+    }
+
+    /* Hover Glow */
+    section[data-testid="stSidebar"] .stRadio label:hover {
+        text-shadow: 0 0 12px rgba(255,130,0,0.9);
+        cursor: pointer;
+    }
+
+</style>
+""", unsafe_allow_html=True)
+
 
 # -------------------- CUSTOM PAGE THEME 🎨 --------------------
 st.markdown("""
