@@ -10,150 +10,289 @@ st.set_page_config(
     page_icon="🎨",
     layout="wide"
 )
+
+# -------------------- TITLE --------------------
 st.markdown("""
-<h1 class='app-title'>🔥 Basic Image Processing Studio</h1>
+<h1 class='app-title'>🌸 Warm Image Studio</h1>
 """, unsafe_allow_html=True)
 
-# -------------------- TITLE STYLING --------------------
+# -------------------- CSS STYLING --------------------
 st.markdown("""
 <style>
-    /* ================ TITLE ================ */
-    .app-title {
-        text-align: center;
-        font-size: 3rem;
-        font-weight: 900;
-        background: linear-gradient(90deg, #FF8C42, #FFB562, #FFD194);
-        -webkit-background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 15px rgba(255,180,120,0.5);
-        margin-bottom: 20px;
-        font-family: 'Segoe UI', sans-serif;
-    }
+/* ===================== GLOBAL ===================== */
+body, .main {
+    background-color: #FFF8F2 !important;
+    color: #4A2C2A !important;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-    /* ================ SIDEBAR ================ */
-    section[data-testid="stSidebar"] {
-        background: #FFF3E0 !important;
-        border-right: 2px solid #FFB562;
-    }
+/* ===================== TITLE ===================== */
+.app-title {
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #800000, #A52A2A, #D9B99B);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 12px rgba(160, 90, 80, 0.5);
+    margin-bottom: 20px;
+}
 
-    section[data-testid="stSidebar"] h2 {
-        text-align: center;
-        font-weight: 900 !important;
-        background: linear-gradient(90deg, #FF8C42, #FFB562, #FFD194);
-        -webkit-background-clip: text;
-        color: transparent !important;
-        text-shadow: 0 0 8px rgba(255,180,120,0.6);
-    }
+/* ===================== SIDEBAR ===================== */
+section[data-testid="stSidebar"] {
+    background: #F5EDE3 !important;
+    border-right: 2px solid #A52A2A;
+}
 
-    section[data-testid="stSidebar"] .stRadio label {
-        font-weight: 700 !important;
-        font-size: 1rem !important;
-        padding: 3px 0px;
-        color: #6B4226 !important;
-    }
+section[data-testid="stSidebar"] h2 {
+    text-align: center;
+    font-weight: 900 !important;
+    background: linear-gradient(90deg, #800000, #A52A2A, #D9B99B);
+    -webkit-background-clip: text;
+    color: transparent !important;
+    text-shadow: 0 0 6px rgba(160, 90, 80, 0.6);
+}
 
-    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-        color: #A25C37 !important;
-        font-weight: 800 !important;
-    }
+section[data-testid="stSidebar"] .stRadio label {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    color: #4A2C2A !important;
+    padding: 3px 0;
+}
 
-    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
-        fill: #A25C37 !important;
-        stroke: #D68C59 !important;
-    }
+section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
+    color: #A52A2A !important;
+    font-weight: 800 !important;
+}
 
-    section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
-        stroke: #B77B57 !important;
-    }
+section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
+    fill: #A52A2A !important;
+    stroke: #D9B99B !important;
+}
 
-    section[data-testid="stSidebar"] .stRadio label:hover {
-        color: #D68C59 !important;
-        text-shadow: 0 0 8px #D68C59;
-        cursor: pointer;
-    }
+section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
+    stroke: #800000 !important;
+}
 
-    /* ===================== GLOBAL ===================== */
-    .main {
-        background-color: #FFF8F0 !important;
-        color: #3E2F2F !important;
-    }
+section[data-testid="stSidebar"] .stRadio label:hover {
+    color: #B35B50 !important;
+    cursor: pointer;
+    text-shadow: 0 0 6px #B35B50;
+}
 
-    h1, h2, h3, h4, h5, h6 {
-        color: #3E2F2F !important;
-        text-shadow: 0 0 5px rgba(200,150,120,0.3);
-        font-weight: 900 !important;
-    }
+/* ===================== BUTTONS ===================== */
+.stButton>button {
+    background-color: #A52A2A !important;
+    color: #FFF8F2 !important;
+    border-radius: 10px !important;
+    padding: 10px 22px !important;
+    border: 1px solid #B35B50 !important;
+    box-shadow: 0 0 6px #B35B50;
+}
 
-    p, span, li, label {
-        color: #4A3B3B !important;
-    }
+.stButton>button:hover {
+    background-color: #800000 !important;
+    box-shadow: 0 0 10px #D9B99B;
+}
 
-    /* Buttons */
-    .stButton>button {
-        background-color: #FFB562 !important;
-        color: #3E2F2F !important;
-        border-radius: 10px !important;
-        padding: 10px 22px !important;
-        border: 1px solid #D68C59 !important;
-        box-shadow: 0 0 8px #D68C59;
-    }
-    .stButton>button:hover {
-        background-color: #FF8C42 !important;
-        box-shadow: 0 0 12px #FFB562;
-    }
+/* ===================== SLIDERS ===================== */
+.stSlider > div[data-baseweb="slider"] > div > div {
+    background: #A52A2A !important;
+}
 
-    /* Sliders */
-    .stSlider > div[data-baseweb="slider"] > div > div {
-        background: #FFB562 !important;
-    }
-    .stSlider > div[data-baseweb="slider"] > div > div > div {
-        background: #FF8C42 !important;
-        box-shadow: 0 0 6px #FFB562;
-    }
+.stSlider > div[data-baseweb="slider"] > div > div > div {
+    background: #800000 !important;
+    box-shadow: 0 0 5px #D9B99B;
+}
 
-    /* Inputs */
-    input, textarea {
-        border: 1px solid #D68C59 !important;
-        background-color: #FFF3E0 !important;
-        color: #3E2F2F !important;
-    }
+/* ===================== INPUTS ===================== */
+input, textarea {
+    border: 1px solid #B35B50 !important;
+    background-color: #F5EDE3 !important;
+    color: #4A2C2A !important;
+}
 
-    /* Images */
-    img {
-        border: 3px solid #FFB562 !important;
-        box-shadow: 0 0 12px #FFD194;
-        border-radius: 8px;
-    }
+/* ===================== IMAGES ===================== */
+img {
+    border: 3px solid #A52A2A !important;
+    box-shadow: 0 0 12px #D9B99B;
+    border-radius: 8px;
+}
 
-    /* Animated gradient title */
-    .animated-title {
-        font-size: 3.2rem;
-        font-weight: 900;
-        text-align: center;
-        background: linear-gradient(90deg, #FF8C42, #FFB562, #FFD194, #FFB562, #FF8C42);
-        background-size: 400% 400%;
-        -webkit-background-clip: text;
-        color: transparent;
-        animation: warmFlow 6s ease infinite;
-        text-shadow: 0 0 15px rgba(255,180,120,0.4);
-        margin-bottom: 0.8rem;
-    }
+/* ===================== ANIMATED TITLE ===================== */
+.animated-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(90deg, #800000, #A52A2A, #D9B99B, #A52A2A, #800000);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: warmFlow 6s ease infinite;
+    text-shadow: 0 0 15px rgba(160,90,80,0.4);
+    margin-bottom: 0.8rem;
+}
 
-    @keyframes warmFlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+@keyframes warmFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    /* Footer */
-    .footer {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #A25C37;
-        text-shadow: 0 0 8px rgba(255,180,120,0.5);
-    }
-
+/* ===================== FOOTER ===================== */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #A52A2A;
+    text-shadow: 0 0 8px rgba(217,185,155,0.5);
+}
 </style>
 """, unsafe_allow_html=True)
+
+# -------------------- SIDE MENU --------------------
+st.sidebar.title("📌 Image Processing Menu")
+
+menu_options = {
+    "🏠 Home": "home",
+    "📏 Image Properties": "props",
+    "⚫ Grayscale": "gray",
+    "🔄 Rotate Image": "rotate",
+    "🪞 Mirror Image": "mirror",
+    "🟢 Contours": "contours",
+    "✂ Vertical / Horizontal Cut": "cut",
+    "📐 Custom Percentage Cut": "custom",
+    "🔳 4×4 Grid Split": "grid"
+}
+
+menu_label = st.sidebar.radio("Choose an Option 👇", list(menu_options.keys()))
+menu = menu_options[menu_label]
+
+# -------------------- IMAGE UPLOADER --------------------
+uploaded_file = st.sidebar.file_uploader("📤 Upload an image", type=["png", "jpg", "jpeg"])
+if uploaded_file is None:
+    st.info("⬅️ Please upload an image from the **sidebar** to continue.")
+    st.stop()
+
+image = Image.open(uploaded_file)
+img_cv = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+gray = cv2.cvtColor(img_cv, cv2.COLOR_BGR2GRAY)
+w, h = image.size
+
+# -------------------- DOWNLOAD FUNCTION --------------------
+def download_image(img, filename):
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    st.download_button("📥 Download Image", buf.getvalue(), file_name=filename)
+
+# ====================== HOME ======================
+if menu == "home":
+    st.title("🌸 Welcome to Warm Image Studio")
+    st.subheader("✨ Elegant • Warm • Easy-to-use ✨")
+    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.markdown("""
+    ### 🔧 Features You Can Use:
+    - Grayscale  
+    - Rotate  
+    - Mirror  
+    - Contours  
+    - 50-50 Split  
+    - Custom Percentage Split  
+    - 4×4 Grid Tiles  
+
+    👉 Choose a feature using the sidebar!
+    """)
+
+# ====================== IMAGE PROPERTIES ======================
+elif menu == "props":
+    st.title("📏 Image Properties")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image(image, caption="Uploaded Image", use_column_width=True)
+    with col2:
+        st.write(f"🖼 **Size:** {w} × {h}")
+        st.write(f"🎯 **Mode:** {image.mode}")
+        st.write(f"🔍 **Shape:** {np.array(img_cv).shape}")
+
+# ====================== GRAYSCALE ======================
+elif menu == "gray":
+    st.title("⚫ Grayscale Image")
+    gray_img = Image.fromarray(gray)
+    st.image(gray_img, caption="Grayscale", use_column_width=True)
+    download_image(gray_img, "grayscale.png")
+
+# ====================== ROTATE ======================
+elif menu == "rotate":
+    st.title("🔄 Rotate Image")
+    angle = st.radio("Choose rotation:", [90, 180, 270], horizontal=True)
+    rotated = image.rotate(angle, expand=True)
+    st.image(rotated, caption=f"Rotated {angle}°", use_column_width=True)
+    download_image(rotated, f"rotated_{angle}.png")
+
+# ====================== MIRROR ======================
+elif menu == "mirror":
+    st.title("🪞 Mirror Image")
+    mirrored = image.transpose(Image.FLIP_LEFT_RIGHT)
+    st.image(mirrored, caption="Mirrored Image", use_column_width=True)
+    download_image(mirrored, "mirrored.png")
+
+# ====================== CONTOURS ======================
+elif menu == "contours":
+    st.title("🟢 Contour Detection")
+    edges = cv2.Canny(gray, 100, 200)
+    contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contoured = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+    cv2.drawContours(contoured, contours, -1, (0,255,0), 2)
+    contoured_img = Image.fromarray(cv2.cvtColor(contoured, cv2.COLOR_BGR2RGB))
+    st.write(f"✨ **Contours Found:** {len(contours)}")
+    col1, col2 = st.columns(2)
+    col1.image(edges, caption="Edges", use_column_width=True)
+    col2.image(contoured_img, caption="Contours", use_column_width=True)
+    download_image(contoured_img, "contours.png")
+
+# ====================== 50/50 SPLIT ======================
+elif menu == "cut":
+    st.title("✂ Vertical & Horizontal 50/50 Cut")
+    left = image.crop((0, 0, w//2, h))
+    right = image.crop((w//2, 0, w, h))
+    top = image.crop((0, 0, w, h//2))
+    bottom = image.crop((0, h//2, w, h))
+    st.subheader("📌 Vertical (Left / Right)")
+    col1, col2 = st.columns(2)
+    col1.image(left, caption="Left Half", use_column_width=True)
+    col2.image(right, caption="Right Half", use_column_width=True)
+    st.subheader("📌 Horizontal (Top / Bottom)")
+    col3, col4 = st.columns(2)
+    col3.image(top, caption="Top Half", use_column_width=True)
+    col4.image(bottom, caption="Bottom Half", use_column_width=True)
+
+# ====================== CUSTOM PERCENT SPLIT ======================
+elif menu == "custom":
+    st.title("📐 Custom Percentage Cut")
+    percent = st.slider("Select left side %:", 10, 90, 80)
+    cut_x = int((percent / 100) * w)
+    p1 = image.crop((0, 0, cut_x, h))
+    p2 = image.crop((cut_x, 0, w, h))
+    st.subheader(f"🔸 Left: {percent}%")
+    st.image(p1)
+    st.subheader(f"🔹 Right: {100 - percent}%")
+    st.image(p2)
+
+# ====================== 4×4 GRID ======================
+elif menu == "grid":
+    st.title("🔳 4×4 Grid Split")
+    grid_rows, grid_cols = 4, 4
+    tile_w, tile_h = w // grid_cols, h // grid_rows
+    tiles = []
+    for r in range(grid_rows):
+        for c in range(grid_cols):
+            left = c * tile_w
+            upper = r * tile_h
+            right = (c+1)*tile_w if c < grid_cols-1 else w
+            lower = (r+1)*tile_h if r < grid_rows-1 else h
+            tiles.append(image.crop((left, upper, right, lower)))
+    st.write("📦 **Generated 16 tiles:**")
+    cols = st.columns(4)
+    for i, tile in enumerate(tiles):
+        cols[i % 4].image(tile, caption=f"Tile {i+1}", use_column_width=True)
