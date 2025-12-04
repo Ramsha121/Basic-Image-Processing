@@ -13,34 +13,29 @@ st.set_page_config(
 
 # -------------------- CUSTOM PAGE THEME 🎨 --------------------
 st.markdown("""
-    <style>
-        .main { background-color: #f4f7fb; }
-        .stButton>button {
-            background-color:#ff4b4b;
-            color:white;
-            border-radius:10px;
-            padding:8px 20px;
-        }
-        .stRadio>div { 
-            background:white; 
-            padding:10px; 
-            border-radius:10px; 
-        }
-    </style>
+<style>
+
+    /* 🎨 Make ALL sidebar radio labels visible (change font color) */
+    section[data-testid="stSidebar"] .stRadio label {
+        color: red !important;        /* change to any color you want */
+        font-weight: 600 !important;
+    }
+
+    /* 🎨 Make selected option also red */
+    section[data-testid="stSidebar"] .stRadio div[role='radio'] > div[data-testid='stMarkdownContainer'] {
+        color: red !important;
+        font-weight: 700 !important;
+    }
+
+    /* 🎨 Make "Choose an Option 👇" title red */
+    section[data-testid="stSidebar"] h2 {
+        color: red !important;
+        font-weight: 800 !important;
+    }
+
+</style>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-    <style>
-        /* Sidebar title to red */
-        .css-1d391kg, .css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3 {
-            color: red !important;
-        }
-        /* Streamlit sidebar header fix for newer versions */
-        section[data-testid="stSidebar"] h2 {
-            color: red !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 
 # -------------------- SIDE MENU WITH FIXED LABELS --------------------
