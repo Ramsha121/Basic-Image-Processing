@@ -13,141 +13,150 @@ st.set_page_config(
 
 # -------------------- TITLE --------------------
 st.markdown("""
-<h1 class='app-title'>🌸 Basic Image Processing Studio</h1>
+<h1 class='app-title'>✨ Image Processing Studio</h1>
 """, unsafe_allow_html=True)
 
 # -------------------- CSS STYLING --------------------
 st.markdown("""
 <style>
-/* ===================== GLOBAL ===================== */
-body, .main {
-    background-color: #FFF8F2 !important;
-    color: #4A2C2A !important;
-    font-family: 'Segoe UI', sans-serif;
-}
+    /* ===================== TITLE ===================== */
+    .app-title {
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 900;
+        background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 10px rgba(160,82,45,0.5);
+        margin-bottom: 25px;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-/* ===================== TITLE ===================== */
-.app-title {
-    text-align: center;
-    font-size: 3.2rem;
-    font-weight: 900;
-    background: linear-gradient(90deg, #800000, #A52A2A, #D9B99B);
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 12px rgba(160, 90, 80, 0.5);
-    margin-bottom: 20px;
-}
+    /* ===================== SIDEBAR ===================== */
+    section[data-testid="stSidebar"] {
+        background: #FFF5E6 !important;
+        border-right: 2px solid #A0522D;
+    }
 
-/* ===================== SIDEBAR ===================== */
-section[data-testid="stSidebar"] {
-    background: #F5EDE3 !important;
-    border-right: 2px solid #A52A2A;
-}
+    section[data-testid="stSidebar"] h2 {
+        text-align: center;
+        font-weight: 900 !important;
+        background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9);
+        -webkit-background-clip: text;
+        color: transparent !important;
+        text-shadow: 0 0 8px rgba(160,82,45,0.6);
+    }
 
-section[data-testid="stSidebar"] h2 {
-    text-align: center;
-    font-weight: 900 !important;
-    background: linear-gradient(90deg, #800000, #A52A2A, #D9B99B);
-    -webkit-background-clip: text;
-    color: transparent !important;
-    text-shadow: 0 0 6px rgba(160, 90, 80, 0.6);
-}
+    section[data-testid="stSidebar"] .stRadio label {
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+        padding: 3px 0px;
+        color: #4B2E2E !important;
+    }
 
-section[data-testid="stSidebar"] .stRadio label {
-    font-weight: 700 !important;
-    font-size: 1rem !important;
-    color: #4A2C2A !important;
-    padding: 3px 0;
-}
+    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
+        color: #6E3B3B !important;
+        font-weight: 800 !important;
+    }
 
-section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-    color: #A52A2A !important;
-    font-weight: 800 !important;
-}
+    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
+        fill: #6E3B3B !important;
+        stroke: #A0522D !important;
+    }
 
-section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
-    fill: #A52A2A !important;
-    stroke: #D9B99B !important;
-}
+    section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
+        stroke: #8B4B4B !important;
+    }
 
-section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
-    stroke: #800000 !important;
-}
+    section[data-testid="stSidebar"] .stRadio label:hover {
+        color: #A0522D !important;
+        text-shadow: 0 0 8px #A0522D;
+        cursor: pointer;
+    }
 
-section[data-testid="stSidebar"] .stRadio label:hover {
-    color: #B35B50 !important;
-    cursor: pointer;
-    text-shadow: 0 0 6px #B35B50;
-}
+    /* ===================== MAIN PAGE ===================== */
+    .main {
+        background-color: #FFF8F2 !important;
+        color: #3B2F2F !important;
+    }
 
-/* ===================== BUTTONS ===================== */
-.stButton>button {
-    background-color: #A52A2A !important;
-    color: #FFF8F2 !important;
-    border-radius: 10px !important;
-    padding: 10px 22px !important;
-    border: 1px solid #B35B50 !important;
-    box-shadow: 0 0 6px #B35B50;
-}
+    h1, h2, h3, h4, h5, h6 {
+        color: #3B2F2F !important;
+        text-shadow: 0 0 5px rgba(160,82,45,0.2);
+        font-weight: 900 !important;
+    }
 
-.stButton>button:hover {
-    background-color: #800000 !important;
-    box-shadow: 0 0 10px #D9B99B;
-}
+    p, span, li, label {
+        color: #4B3B3B !important;
+    }
 
-/* ===================== SLIDERS ===================== */
-.stSlider > div[data-baseweb="slider"] > div > div {
-    background: #A52A2A !important;
-}
+    /* ===================== BUTTONS ===================== */
+    .stButton>button {
+        background-color: #A0522D !important;
+        color: #FFF5E6 !important;
+        border-radius: 10px !important;
+        padding: 10px 22px !important;
+        border: 1px solid #8B4B4B !important;
+        box-shadow: 0 0 8px #8B4B4B;
+    }
+    .stButton>button:hover {
+        background-color: #800000 !important;
+        box-shadow: 0 0 12px #A0522D;
+    }
 
-.stSlider > div[data-baseweb="slider"] > div > div > div {
-    background: #800000 !important;
-    box-shadow: 0 0 5px #D9B99B;
-}
+    /* ===================== SLIDERS ===================== */
+    .stSlider > div[data-baseweb="slider"] > div > div {
+        background: #A0522D !important;
+    }
+    .stSlider > div[data-baseweb="slider"] > div > div > div {
+        background: #800000 !important;
+        box-shadow: 0 0 6px #A0522D;
+    }
 
-/* ===================== INPUTS ===================== */
-input, textarea {
-    border: 1px solid #B35B50 !important;
-    background-color: #F5EDE3 !important;
-    color: #4A2C2A !important;
-}
+    /* ===================== INPUT FIELDS ===================== */
+    input, textarea {
+        border: 1px solid #A0522D !important;
+        background-color: #FFF5E6 !important;
+        color: #3B2F2F !important;
+    }
 
-/* ===================== IMAGES ===================== */
-img {
-    border: 3px solid #A52A2A !important;
-    box-shadow: 0 0 12px #D9B99B;
-    border-radius: 8px;
-}
+    /* ===================== IMAGES ===================== */
+    img {
+        border: 3px solid #A0522D !important;
+        box-shadow: 0 0 12px #FFDAB9;
+        border-radius: 8px;
+    }
 
-/* ===================== ANIMATED TITLE ===================== */
-.animated-title {
-    font-size: 3.2rem;
-    font-weight: 900;
-    text-align: center;
-    background: linear-gradient(90deg, #800000, #A52A2A, #D9B99B, #A52A2A, #800000);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: warmFlow 6s ease infinite;
-    text-shadow: 0 0 15px rgba(160,90,80,0.4);
-    margin-bottom: 0.8rem;
-}
+    /* ===================== ANIMATED TITLE ===================== */
+    .animated-title {
+        font-size: 3.2rem;
+        font-weight: 900;
+        text-align: center;
+        background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9, #A0522D, #800000);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: warmFlow 6s ease infinite;
+        text-shadow: 0 0 15px rgba(160,82,45,0.4);
+        margin-bottom: 1rem;
+    }
 
-@keyframes warmFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+    @keyframes warmFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-/* ===================== FOOTER ===================== */
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #A52A2A;
-    text-shadow: 0 0 8px rgba(217,185,155,0.5);
-}
+    /* ===================== FOOTER ===================== */
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #6E3B3B;
+        text-shadow: 0 0 8px rgba(160,82,45,0.4);
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -186,11 +195,12 @@ def download_image(img, filename):
     img.save(buf, format="PNG")
     st.download_button("📥 Download Image", buf.getvalue(), file_name=filename)
 
-# ====================== HOME ======================
+# -------------------- HOME --------------------
 if menu == "home":
-    st.title("🌸 Welcome to Warm Image Studio")
-    st.subheader("✨ Elegant • Warm • Easy-to-use ✨")
+    st.title("🎨 Image Processing App")
+    st.subheader("✨ Clean • Aesthetic • Easy-to-use ✨")
     st.image(image, caption="Uploaded Image", use_column_width=True)
+
     st.markdown("""
     ### 🔧 Features You Can Use:
     - Grayscale  
@@ -204,7 +214,7 @@ if menu == "home":
     👉 Choose a feature using the sidebar!
     """)
 
-# ====================== IMAGE PROPERTIES ======================
+# -------------------- IMAGE PROPERTIES --------------------
 elif menu == "props":
     st.title("📏 Image Properties")
     col1, col2 = st.columns(2)
@@ -215,14 +225,14 @@ elif menu == "props":
         st.write(f"🎯 **Mode:** {image.mode}")
         st.write(f"🔍 **Shape:** {np.array(img_cv).shape}")
 
-# ====================== GRAYSCALE ======================
+# -------------------- GRAYSCALE --------------------
 elif menu == "gray":
     st.title("⚫ Grayscale Image")
     gray_img = Image.fromarray(gray)
     st.image(gray_img, caption="Grayscale", use_column_width=True)
     download_image(gray_img, "grayscale.png")
 
-# ====================== ROTATE ======================
+# -------------------- ROTATE --------------------
 elif menu == "rotate":
     st.title("🔄 Rotate Image")
     angle = st.radio("Choose rotation:", [90, 180, 270], horizontal=True)
@@ -230,20 +240,20 @@ elif menu == "rotate":
     st.image(rotated, caption=f"Rotated {angle}°", use_column_width=True)
     download_image(rotated, f"rotated_{angle}.png")
 
-# ====================== MIRROR ======================
+# -------------------- MIRROR --------------------
 elif menu == "mirror":
     st.title("🪞 Mirror Image")
     mirrored = image.transpose(Image.FLIP_LEFT_RIGHT)
     st.image(mirrored, caption="Mirrored Image", use_column_width=True)
     download_image(mirrored, "mirrored.png")
 
-# ====================== CONTOURS ======================
+# -------------------- CONTOURS --------------------
 elif menu == "contours":
     st.title("🟢 Contour Detection")
     edges = cv2.Canny(gray, 100, 200)
     contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contoured = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
-    cv2.drawContours(contoured, contours, -1, (0,255,0), 2)
+    cv2.drawContours(contoured, contours, -1, (128,255,128), 2)
     contoured_img = Image.fromarray(cv2.cvtColor(contoured, cv2.COLOR_BGR2RGB))
     st.write(f"✨ **Contours Found:** {len(contours)}")
     col1, col2 = st.columns(2)
@@ -251,7 +261,7 @@ elif menu == "contours":
     col2.image(contoured_img, caption="Contours", use_column_width=True)
     download_image(contoured_img, "contours.png")
 
-# ====================== 50/50 SPLIT ======================
+# -------------------- 50/50 SPLIT --------------------
 elif menu == "cut":
     st.title("✂ Vertical & Horizontal 50/50 Cut")
     left = image.crop((0, 0, w//2, h))
@@ -267,7 +277,7 @@ elif menu == "cut":
     col3.image(top, caption="Top Half", use_column_width=True)
     col4.image(bottom, caption="Bottom Half", use_column_width=True)
 
-# ====================== CUSTOM PERCENT SPLIT ======================
+# -------------------- CUSTOM PERCENT SPLIT --------------------
 elif menu == "custom":
     st.title("📐 Custom Percentage Cut")
     percent = st.slider("Select left side %:", 10, 90, 80)
@@ -279,11 +289,13 @@ elif menu == "custom":
     st.subheader(f"🔹 Right: {100 - percent}%")
     st.image(p2)
 
-# ====================== 4×4 GRID ======================
+# -------------------- 4×4 GRID --------------------
 elif menu == "grid":
     st.title("🔳 4×4 Grid Split")
-    grid_rows, grid_cols = 4, 4
-    tile_w, tile_h = w // grid_cols, h // grid_rows
+    grid_rows = 4
+    grid_cols = 4
+    tile_w = w // grid_cols
+    tile_h = h // grid_rows
     tiles = []
     for r in range(grid_rows):
         for c in range(grid_cols):
