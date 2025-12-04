@@ -14,8 +14,8 @@ st.set_page_config(
 # -------------------- TITLE --------------------
 st.markdown("""
 <h1 class='app-title'>✨ Image Processing Studio</h1>
+<h2 class='app-subtitle'>✨ Clean • Aesthetic • Easy-to-use ✨</h2>
 """, unsafe_allow_html=True)
-
 
 # -------------------- CSS STYLING --------------------
 st.markdown("""
@@ -30,145 +30,141 @@ h1.app-title {
     margin-bottom: 10px;
 }
 
-h2, .stSubheader {
+h2.app-subtitle {
     font-size: 1.8rem;
     font-weight: 700;
     text-align: center;
-    color: #6E3B3B;  /* Warm brown */
     background: linear-gradient(90deg, #6E3B3B, #A0522D);
     -webkit-background-clip: text;
     color: transparent;
     text-shadow: 0 0 5px rgba(160,82,45,0.4);
+    margin-bottom: 25px;
 }
-</style>
-""", unsafe_allow_html=True)
 
+/* ===================== SIDEBAR ===================== */
+section[data-testid="stSidebar"] {
+    background: #FFF5E6 !important;
+    border-right: 2px solid #A0522D;
+}
 
-    /* ===================== SIDEBAR ===================== */
-    section[data-testid="stSidebar"] {
-        background: #FFF5E6 !important;
-        border-right: 2px solid #A0522D;
-    }
+section[data-testid="stSidebar"] h2 {
+    text-align: center;
+    font-weight: 900 !important;
+    background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9);
+    -webkit-background-clip: text;
+    color: transparent !important;
+    text-shadow: 0 0 8px rgba(160,82,45,0.6);
+}
 
-    section[data-testid="stSidebar"] h2 {
-        text-align: center;
-        font-weight: 900 !important;
-        background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9);
-        -webkit-background-clip: text;
-        color: transparent !important;
-        text-shadow: 0 0 8px rgba(160,82,45,0.6);
-    }
+section[data-testid="stSidebar"] .stRadio label {
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    padding: 3px 0px;
+    color: #4B2E2E !important;
+}
 
-    section[data-testid="stSidebar"] .stRadio label {
-        font-weight: 600 !important;
-        font-size: 1rem !important;
-        padding: 3px 0px;
-        color: #4B2E2E !important;
-    }
+section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
+    color: #6E3B3B !important;
+    font-weight: 800 !important;
+}
 
-    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] label {
-        color: #6E3B3B !important;
-        font-weight: 800 !important;
-    }
+section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
+    fill: #6E3B3B !important;
+    stroke: #A0522D !important;
+}
 
-    section[data-testid="stSidebar"] .stRadio div[role='radio'][aria-checked='true'] svg {
-        fill: #6E3B3B !important;
-        stroke: #A0522D !important;
-    }
+section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
+    stroke: #8B4B4B !important;
+}
 
-    section[data-testid="stSidebar"] .stRadio div[role='radio'] svg {
-        stroke: #8B4B4B !important;
-    }
+section[data-testid="stSidebar"] .stRadio label:hover {
+    color: #A0522D !important;
+    text-shadow: 0 0 8px #A0522D;
+    cursor: pointer;
+}
 
-    section[data-testid="stSidebar"] .stRadio label:hover {
-        color: #A0522D !important;
-        text-shadow: 0 0 8px #A0522D;
-        cursor: pointer;
-    }
+/* ===================== MAIN PAGE ===================== */
+.main {
+    background-color: #FFF8F2 !important;
+    color: #3B2F2F !important;
+}
 
-    /* ===================== MAIN PAGE ===================== */
-    .main {
-        background-color: #FFF8F2 !important;
-        color: #3B2F2F !important;
-    }
+h1, h2, h3, h4, h5, h6 {
+    color: #3B2F2F !important;
+    text-shadow: 0 0 5px rgba(160,82,45,0.2);
+    font-weight: 900 !important;
+}
 
-    h1, h2, h3, h4, h5, h6 {
-        color: #3B2F2F !important;
-        text-shadow: 0 0 5px rgba(160,82,45,0.2);
-        font-weight: 900 !important;
-    }
+p, span, li, label {
+    color: #4B3B3B !important;
+}
 
-    p, span, li, label {
-        color: #4B3B3B !important;
-    }
+/* ===================== BUTTONS ===================== */
+.stButton>button {
+    background-color: #A0522D !important;
+    color: #FFF5E6 !important;
+    border-radius: 10px !important;
+    padding: 10px 22px !important;
+    border: 1px solid #8B4B4B !important;
+    box-shadow: 0 0 8px #8B4B4B;
+}
+.stButton>button:hover {
+    background-color: #800000 !important;
+    box-shadow: 0 0 12px #A0522D;
+}
 
-    /* ===================== BUTTONS ===================== */
-    .stButton>button {
-        background-color: #A0522D !important;
-        color: #FFF5E6 !important;
-        border-radius: 10px !important;
-        padding: 10px 22px !important;
-        border: 1px solid #8B4B4B !important;
-        box-shadow: 0 0 8px #8B4B4B;
-    }
-    .stButton>button:hover {
-        background-color: #800000 !important;
-        box-shadow: 0 0 12px #A0522D;
-    }
+/* ===================== SLIDERS ===================== */
+.stSlider > div[data-baseweb="slider"] > div > div {
+    background: #A0522D !important;
+}
+.stSlider > div[data-baseweb="slider"] > div > div > div {
+    background: #800000 !important;
+    box-shadow: 0 0 6px #A0522D;
+}
 
-    /* ===================== SLIDERS ===================== */
-    .stSlider > div[data-baseweb="slider"] > div > div {
-        background: #A0522D !important;
-    }
-    .stSlider > div[data-baseweb="slider"] > div > div > div {
-        background: #800000 !important;
-        box-shadow: 0 0 6px #A0522D;
-    }
+/* ===================== INPUT FIELDS ===================== */
+input, textarea {
+    border: 1px solid #A0522D !important;
+    background-color: #FFF5E6 !important;
+    color: #3B2F2F !important;
+}
 
-    /* ===================== INPUT FIELDS ===================== */
-    input, textarea {
-        border: 1px solid #A0522D !important;
-        background-color: #FFF5E6 !important;
-        color: #3B2F2F !important;
-    }
+/* ===================== IMAGES ===================== */
+img {
+    border: 3px solid #A0522D !important;
+    box-shadow: 0 0 12px #FFDAB9;
+    border-radius: 8px;
+}
 
-    /* ===================== IMAGES ===================== */
-    img {
-        border: 3px solid #A0522D !important;
-        box-shadow: 0 0 12px #FFDAB9;
-        border-radius: 8px;
-    }
+/* ===================== ANIMATED TITLE ===================== */
+.animated-title {
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-align: center;
+    background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9, #A0522D, #800000);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: warmFlow 6s ease infinite;
+    text-shadow: 0 0 15px rgba(160,82,45,0.4);
+    margin-bottom: 1rem;
+}
 
-    /* ===================== ANIMATED TITLE ===================== */
-    .animated-title {
-        font-size: 3.2rem;
-        font-weight: 900;
-        text-align: center;
-        background: linear-gradient(90deg, #800000, #A0522D, #FFDAB9, #A0522D, #800000);
-        background-size: 400% 400%;
-        -webkit-background-clip: text;
-        color: transparent;
-        animation: warmFlow 6s ease infinite;
-        text-shadow: 0 0 15px rgba(160,82,45,0.4);
-        margin-bottom: 1rem;
-    }
+@keyframes warmFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    @keyframes warmFlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-
-    /* ===================== FOOTER ===================== */
-    .footer {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: #6E3B3B;
-        text-shadow: 0 0 8px rgba(160,82,45,0.4);
-    }
-
+/* ===================== FOOTER ===================== */
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #6E3B3B;
+    text-shadow: 0 0 8px rgba(160,82,45,0.4);
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -209,10 +205,7 @@ def download_image(img, filename):
 
 # -------------------- HOME --------------------
 if menu == "home":
-    st.title("🎨 Image Processing App")
-    st.subheader("✨ Clean • Aesthetic • Easy-to-use ✨")
     st.image(image, caption="Uploaded Image", use_column_width=True)
-
     st.markdown("""
     ### 🔧 Features You Can Use:
     - Grayscale  
