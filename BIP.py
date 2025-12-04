@@ -287,6 +287,49 @@ if menu == "home":
 
     👉 Choose a feature using the sidebar!
     """)
+st.markdown("""
+<h1 class='animated-title'>🔥 Basic Image Processing Studio</h1>
+
+<div class='fadein'>
+    <h3 style='text-align:center; font-weight:700; color:#ff4d00; margin-top:-10px;'>
+        Explore the Magic Behind Every Pixel ✨
+    </h3>
+
+    <p style='font-size:1.1rem; line-height:1.7;'>
+        Welcome to <b>Basic Image Processing Studio</b> — a clean, elegant, and interactive space 
+        where raw images transform into insights.  
+        This tool helps you experiment with the fundamental techniques that power modern 
+        <span style='color:#ff4500; font-weight:700;'>Computer Vision</span>,
+        <span style='color:#ff9d00; font-weight:700;'>Machine Learning</span>,
+        and <span style='color:#ffaa22; font-weight:700;'>AI</span> systems.
+    </p>
+
+    <ul style='font-size:1.1rem; line-height:1.8; margin-left:15px;'>
+        <li>🎨 <b>Visualize</b> how images are represented and transformed</li>
+        <li>⚫ <b>Convert</b> images to grayscale for simplified analysis</li>
+        <li>🔄 <b>Rotate</b> or mirror images with precision</li>
+        <li>🟢 <b>Detect</b> contours that highlight shapes & objects</li>
+        <li>✂ <b>Split</b> images exactly the way you want</li>
+        <li>🔳 <b>Break</b> images into grids like a CNN kernel</li>
+    </ul>
+
+    <div class='quote-card'>
+        “Image processing is not just about manipulating pictures —  
+        it's about helping machines <b>see, understand, and make decisions</b>.”
+    </div>
+
+    <br>
+
+    <p style='font-size:1.15rem; text-align:center; margin-top:15px;'>
+        Use the sidebar to explore each transformation and bring your images to life.
+    </p>
+</div>
+
+<div class='footer'>
+    ✨ Thank you for using Basic Image Processing Studio —  
+    <br>may your creativity and curiosity continue to shine bright! 🔥
+</div>
+""", unsafe_allow_html=True)
 
 
 # ====================== IMAGE PROPERTIES ======================
